@@ -84,7 +84,17 @@
         <artifactId>spring-instrument-tomcat</artifactId>
         <version>${springframework.version}</version>
     </dependency>
-	
+    
+	<!-- 
+		Spring——Messaging
+		spring-messaging
+	-->
+	<dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-messaging</artifactId>
+        <version>${springframework.version}</version>
+      	<exclusions><exclusion><groupId>*</groupId><artifactId>*</artifactId></exclusion></exclusions>  
+    </dependency>
   </dependencies>
   
   
