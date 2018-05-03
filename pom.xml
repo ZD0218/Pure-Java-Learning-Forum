@@ -7,6 +7,12 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>JavaLearningForum Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  
+  <properties>  
+  	<!-- 使用依赖归类，凡是Spring的jar包都是同一个版本的，在这里统一设置 版本号 -->
+  	<springframework.version>4.3.16.RELEASE</springframework.version>  
+  </properties>  
+  
   <dependencies>
   
   	<!-- 单元测试 -->
@@ -86,6 +92,8 @@
 		    <artifactId>mchange-commons-java</artifactId>
 		    <version>0.2.15</version>
 		</dependency>
+		
+		
 	<!-- 5.JSP  JSTL标签库 -->
 		<!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl-api -->
 		<dependency>
@@ -124,7 +132,14 @@
 		    </exclusions>
 		</dependency>
 
-
+	<!-- Spring 核心-->
+	<!-- Spring框架的各包之间的依赖关系  https://docs.spring.io/spring/docs/4.2.x/spring-framework-reference/html/overview.html -->
+	<dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>${springframework.version}</version>
+    </dependency>
+	
 	
 	
   </dependencies>
@@ -132,6 +147,7 @@
   
   <build>
     <finalName>JavaLearningForum</finalName>
+    <!-- 设置JRE版本号为1.8 -->
     <plugins>
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
