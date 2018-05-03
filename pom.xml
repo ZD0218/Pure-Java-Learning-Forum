@@ -11,12 +11,14 @@
   <!-- 仓库地址：https://mvnrepository.com -->
   
   <properties>  
-  	<!-- 使用依赖归类，凡是Spring的jar包都是同一个版本的，在这里统一设置 版本号 -->
+  	<!-- 使用依赖归类 -->
+  	<!-- 使用springframework.version代表当前Spring框架的版本号，不同版本号，jar包之间的依赖关系可能不同，要注意！  -->
   	<springframework.version>4.3.16.RELEASE</springframework.version>  
   </properties>  
   
   <dependencies>
 
+	<!-- 1.Spring框架 -->
 
 	<!-- 
 		Spring——Core Container
@@ -63,6 +65,7 @@
 	<!-- 
 		Spring——AOP and Instrumentation
 		spring-aop, spring-aspects, spring-instrument, spring-instrument-tomcat
+		 其中spring-aspects依赖于aspectjweaver
 		包括依赖jar包，共5个
 	-->
 	<dependency>
@@ -176,6 +179,73 @@
         <version>${springframework.version}</version>
         <exclusions><exclusion><groupId>*</groupId><artifactId>*</artifactId></exclusion></exclusions>
     </dependency>
+    
+    
+    <!-- 2.MyBatis框架 -->
+    <!-- 依赖jar包
+    	cglib, commons-logging(已有), log4j, log4j-core, ognl, javassist, slf4j-api, slf4j-log4j12
+     -->
+	<dependency>
+	    <groupId>org.mybatis</groupId>
+	    <artifactId>mybatis</artifactId>
+	    <version>3.4.6</version>
+	</dependency>
+	<dependency>
+	    <groupId>cglib</groupId>
+	    <artifactId>cglib</artifactId>
+	    <version>3.2.5</version>
+	</dependency>
+	<dependency>
+	    <groupId>log4j</groupId>
+	    <artifactId>log4j</artifactId>
+	    <version>1.2.17</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-core</artifactId>
+	    <version>2.3</version>
+	</dependency>
+	<dependency>
+	    <groupId>ognl</groupId>
+	    <artifactId>ognl</artifactId>
+	    <version>3.1.16</version>
+	    <exclusions><exclusion><groupId>*</groupId><artifactId>*</artifactId></exclusion></exclusions>
+	</dependency>
+	<dependency>
+	    <groupId>org.javassist</groupId>
+	    <artifactId>javassist</artifactId>
+	    <version>3.22.0-GA</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>slf4j-api</artifactId>
+	    <version>1.7.25</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>slf4j-log4j12</artifactId>
+	    <version>1.7.25</version>
+	    <scope>test</scope>
+	    <exclusions><exclusion><groupId>*</groupId><artifactId>*</artifactId></exclusion></exclusions>
+	</dependency>
+
+	
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
   </dependencies>
   
   
