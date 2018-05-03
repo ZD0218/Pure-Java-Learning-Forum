@@ -164,6 +164,18 @@
         <version>${springframework.version}</version>
         <exclusions><exclusion><groupId>*</groupId><artifactId>*</artifactId></exclusion></exclusions>
     </dependency>
+    
+	<!-- 
+		Spring——test
+		spring-test
+		包括依赖jar包，共1个
+	-->
+	<dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-test</artifactId>
+        <version>${springframework.version}</version>
+        <exclusions><exclusion><groupId>*</groupId><artifactId>*</artifactId></exclusion></exclusions>
+    </dependency>
   </dependencies>
   
   
