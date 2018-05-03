@@ -8,6 +8,8 @@
   <name>JavaLearningForum Maven Webapp</name>
   <url>http://maven.apache.org</url>
   
+  <!-- 仓库地址：https://mvnrepository.com -->
+  
   <properties>  
   	<!-- 使用依赖归类，凡是Spring的jar包都是同一个版本的，在这里统一设置 版本号 -->
   	<springframework.version>4.3.16.RELEASE</springframework.version>  
@@ -17,10 +19,15 @@
 
 
 	<!-- 
-		Spring 核心容器
+		Spring——Core Container
 		spring-core, spring-beans, spring-context, spring-context-support, spring-expression
 		 其中spring-corey依赖于commons-logging
 	-->
+	<dependency>
+	    <groupId>commons-logging</groupId>
+	    <artifactId>commons-logging</artifactId>
+	    <version>1.2</version>
+	</dependency>
 	<dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-core</artifactId>
@@ -51,8 +58,32 @@
         <version>${springframework.version}</version>
       	<exclusions><exclusion><groupId>*</groupId><artifactId>*</artifactId></exclusion></exclusions>  
     </dependency>
-
-	
+    
+	<!-- 
+		Spring——AOP and Instrumentation
+		spring-aop, spring-aspects, spring-instrument, spring-instrument-tomcat
+	-->
+	<dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-aop</artifactId>
+        <version>${springframework.version}</version>
+      	<exclusions><exclusion><groupId>*</groupId><artifactId>*</artifactId></exclusion></exclusions>  
+    </dependency>
+	<dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-aspects</artifactId>
+        <version>${springframework.version}</version>
+    </dependency>
+	<dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-instrument</artifactId>
+        <version>${springframework.version}</version>
+    </dependency>
+	<dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-instrument-tomcat</artifactId>
+        <version>${springframework.version}</version>
+    </dependency>
 	
   </dependencies>
   
