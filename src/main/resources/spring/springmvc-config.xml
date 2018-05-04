@@ -8,7 +8,7 @@
     <!-- 配置Handle，映射"/hello"请求 -->
     <bean
         name="/hello"
-        class="org.fkit.controller.HelloController" />
+        class="com.duyanhan.forum.contoller.HelloController" />
 
     <!-- 处理映射器将bean的name作为url进行查找，需要在配置Handle时指定name（即url） -->
     <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
