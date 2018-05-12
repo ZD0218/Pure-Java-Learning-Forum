@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <properties resource="mybatis.properties" />
+    <context id="context1">
+        <jdbcConnection
+            connectionURL="${jdbc_url}"
+            driverClass="${jdbc_driver}"
+            password="${jdbc_pswd}"
+            userId="${jdbc_user}" />
+        <javaModelGenerator
+            targetPackage="${domainPackage}"
+            targetProject="${project_java}" />
+        <sqlMapGenerator
+            targetPackage="${mapperPackage}"
+            targetProject="${project_resources}" />
+        <javaClientGenerator
+            targetPackage="${daoPackage}"
+            targetProject="${project_java}"
+            type="XMLMAPPER" />
+        <table
+            tableName="userinfo"
+            domainObjectName="UserInfo"
+            enableCountByExample="true"
+            enableUpdateByExample="true"
+            enableDeleteByExample="true"
+            enableSelectByExample="true"
+            selectByExampleQueryId="true">
+        </table>
+        <table
+            tableName="post"
+            domainObjectName="Post"
+            enableCountByExample="true"
+            enableUpdateByExample="true"
+            enableDeleteByExample="true"
+            enableSelectByExample="true"
+            selectByExampleQueryId="true">
+        </table>
+        <table
+            tableName="block"
+            domainObjectName="Block"
+            enableCountByExample="true"
+            enableUpdateByExample="true"
+            enableDeleteByExample="true"
+            enableSelectByExample="true"
+            selectByExampleQueryId="true">
+        </table>
+        <table
+            tableName="comment"
+            domainObjectName="Comment"
+            enableCountByExample="true"
+            enableUpdateByExample="true"
+            enableDeleteByExample="true"
+            enableSelectByExample="true"
+            selectByExampleQueryId="true">
+        </table>
+        <table
+            tableName="blackuser"
+            domainObjectName="BlackUser"
+            enableCountByExample="true"
+            enableUpdateByExample="true"
+            enableDeleteByExample="true"
+            enableSelectByExample="true"
+            selectByExampleQueryId="true">
+        </table>
+    </context>
+</generatorConfiguration>

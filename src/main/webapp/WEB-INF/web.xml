@@ -12,8 +12,7 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <!-- 这里填写的值需要注意：最前面加上"/"表示项目根路径，而Eclipse中Maven项目将 java包和resources包映射的路径都是"WEB-INF/classes"，
-            所以这里前面是"/WEB-INF/classes"，尝试了写"classes/spring/springmvc-config.xml"这样的相对路径无效 -->
+            <!-- 这里填写的值需要注意：最前面加上"/"表示项目根路径，而Eclipse中Maven项目将 java包和resources包映射的路径都是"WEB-INF/classes"，所以这里前面是"/WEB-INF/classes"，尝试了写"classes/spring/springmvc-config.xml"这样的相对路径无效 -->
             <param-value>/WEB-INF/classes/spring/springmvc-config.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
