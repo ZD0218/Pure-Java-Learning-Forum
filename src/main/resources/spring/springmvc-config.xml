@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans
     xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:mvc="http://www.springframework.org/schema/mvc"
     xmlns:context="http://www.springframework.org/schema/context"
     xsi:schemaLocation="
@@ -16,15 +16,14 @@
     <context:component-scan base-package="com.duyanhan.forum.controller"/>
 
     <!-- 视图解析器 -->
-    <bean id="viewResolver" 
-        class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
         <!-- 前缀 -->
         <property name="prefix">
-            <value>/WEB-INF/html/</value>
+            <value>/WEB-INF/jsp/</value>
         </property>
         <!-- 后缀 -->
         <property name="suffix">
-            <value>.html</value>
+            <value>.jsp</value>
         </property>
     </bean>
 </beans>
