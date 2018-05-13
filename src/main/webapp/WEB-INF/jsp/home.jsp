@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <title>主页</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link  rel="stylesheet" href="/resources/css/bulma.min.css" type="text/css"/>
-    <link  rel="stylesheet" href="/resources/css/extra.css" />
+    <link  rel="stylesheet" href="${pageContext.request.contextPath}/css/bulma.min.css" type="text/css"/>
+    <link  rel="stylesheet" href="${pageContext.request.contextPath}/css/extra.css" />
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </head>
 <body>
@@ -15,7 +15,7 @@
     <div class="container">
         <div class="navbar-brand">
             <a class="navbar-item" href="https://bulma.io">
-                <img src="/images/1520235101_862154.png" alt="Bulma: a modern CSS framework based on Flexbox" width="151" height="28">
+                <img src="${pageContext.request.contextPath}/images/LOGO.png" alt="Bulma: a modern CSS framework based on Flexbox" width="151" height="28">
             </a>
             <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
                 <span></span>
