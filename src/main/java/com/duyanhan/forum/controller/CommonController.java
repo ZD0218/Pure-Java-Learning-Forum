@@ -1,7 +1,11 @@
 package com.duyanhan.forum.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.duyanhan.forum.domain.UserInfo;
 
 /**
  * 通用控制器
@@ -25,8 +29,10 @@ public class CommonController {
 	}
 	
 	// 登录页面
-	@RequestMapping(value="/loginForm")
-	public String loginForm() {
+	@RequestMapping(value="/loginForm", method=RequestMethod.GET)
+	public String loginForm(Model model) {
+		UserInfo userInfo = new UserInfo();
+		model.addAttribute("userInfo", userInfo);
 		return "loginForm";
 	}
 	
