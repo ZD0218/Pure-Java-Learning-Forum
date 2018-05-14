@@ -13,6 +13,8 @@
     <result column="sex" jdbcType="VARCHAR" property="sex" />
     <result column="personalDescription" jdbcType="VARCHAR" property="personaldescription" />
   </resultMap>
+  
+  
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated
@@ -89,6 +91,24 @@
     -->
     id, username, password, sex, personalDescription
   </sql>
+  
+  
+  
+  
+  
+  
+  
+    <select id="selectByUsernameAndPassword" parameterType="com.duyanhan.forum.domain.UserInfo" resultMap="com.duyanhan.forum.domain.UserInfo">
+      select * from userinfo where username=#{username} and password=#{password}
+    </select>
+  
+  
+  
+  
+  
+  
+  
+  
   <select id="selectByExample" parameterType="com.duyanhan.forum.domain.UserInfoExample" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated

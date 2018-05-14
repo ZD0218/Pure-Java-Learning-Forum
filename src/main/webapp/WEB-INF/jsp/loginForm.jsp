@@ -25,7 +25,7 @@
 						<div class="column is-offset-one-quarter is-half">
 						
 						
-						<form:form modelAttribute="userInfo" method="post" action="login">
+						<form:form modelAttribute="userInfo" method="post" action="${pageContext.request.contextPath }/user/login">
 						
 							<!-- 用户名标签及输入框 -->
 							<div class="field">
@@ -42,10 +42,10 @@
 							<div class="field">
 								<label class="label">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
 								<div class="control has-icons-left has-icons-right">
-										<form:password path="password" cssClass="input is-dark" placeholder="密码"/>
-										<span class="icon is-small is-left"> <i class="fas fa-lock"></i></span>
-										<span class="icon is-small is-right"> <i class="fas fa-exclamation-triangle"></i></span>
-									</div>
+									<form:password path="password" cssClass="input is-dark" placeholder="密码"/>
+									<span class="icon is-small is-left"> <i class="fas fa-lock"></i></span>
+									<span class="icon is-small is-right"> <i class="fas fa-exclamation-triangle"></i></span>
+								</div>
 								<!--<p class="help is-danger">该密码不安全</p>-->
 							</div>
 							
