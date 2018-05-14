@@ -24,4 +24,15 @@ public class CommonController {
 		return "home";
 	}
 	
+	// 登录页面
+	@RequestMapping(value="/loginForm")
+	public String loginForm() {
+		return "loginForm";
+	}
+	
+	// 注册页面
+	@RequestMapping(value="/registerForm")
+	public String registerForm() {
+		return "registerForm";
+	}
 }

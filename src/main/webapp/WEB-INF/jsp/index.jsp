@@ -15,8 +15,9 @@
 		<div class="hero-head">
 			<nav class="navbar is-transparent">
 				<div class="navbar-brand">
-					<a class="navbar-item" href="https://bulma.io"> <img
-						src="${pageContext.request.contextPath}/images/LOGO.png"
+					<!-- 主页LOGO跳转 -->
+					<a class="navbar-item" href="${pageContext.request.contextPath}/">
+						<img src="${pageContext.request.contextPath}/images/LOGO.png"
 						alt="Bulma: a modern CSS framework based on Flexbox" width="151"
 						height="28">
 					</a>
@@ -28,7 +29,8 @@
 
 				<div id="navbarExampleTransparentExample" class="navbar-menu">
 					<div class="navbar-start">
-						<a class="navbar-item" href="https://bulma.io/"> Home </a>
+						<a class="navbar-item"
+							href="${pageContext.request.contextPath}/home"> Home </a>
 						<div class="navbar-item has-dropdown is-hoverable">
 							<a class="navbar-link" href="/documentation/overview/start/">
 								Docs </a>
