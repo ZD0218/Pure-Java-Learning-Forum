@@ -41,4 +41,10 @@ public class CommonController {
 	public String registerForm() {
 		return "registerForm";
 	}
+	
+	// 帖子列表页面
+	@RequestMapping(value="/postList")
+	public String postList() {
+		return "postList";
+	}
 }

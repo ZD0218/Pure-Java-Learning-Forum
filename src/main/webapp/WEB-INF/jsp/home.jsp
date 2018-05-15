@@ -140,7 +140,7 @@
 					</div>
 				</div>
 				<div class="box">
-					<a class="has-text-success" href="http://duyanhan.com"> <b>Java语言基础版块</b>
+					<a class="has-text-success" href="${pageContext.request.contextPath }/postList"> <b>Java语言基础版块</b>
 						<div>
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque
 								risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum
