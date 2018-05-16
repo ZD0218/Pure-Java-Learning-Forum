@@ -25,7 +25,7 @@ public class CommonController {
 	// 论坛主页
 	@RequestMapping(value="/home")
 	public String home() {
-		return "home2";
+		return "home";
 	}
 
 	// 登录页面
