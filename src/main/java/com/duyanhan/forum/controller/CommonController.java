@@ -25,9 +25,9 @@ public class CommonController {
 	// 论坛主页
 	@RequestMapping(value="/home")
 	public String home() {
-		return "home";
+		return "home2";
 	}
-	
+
 	// 登录页面
 	@RequestMapping(value="/loginForm", method=RequestMethod.GET)
 	public String loginForm(Model model) {
