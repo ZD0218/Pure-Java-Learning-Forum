@@ -6,22 +6,51 @@
 	http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
     id="WebApp_ID"
     version="3.1">
+    
+    <!-- 配置spring核心监听器，默认会以 /WEB-INF/applicationContext.xml作为配置文件 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <!-- contextConfigLocation参数用来指定Spring的配置文件 -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:spring/applicationContext*.xml</param-value>
+    </context-param>
+    
     <!-- 定义Spring MVC的前端控制器 -->
-    <servlet>
-        <servlet-name>springmvc</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <init-param>
-            <param-name>contextConfigLocation</param-name>
-            <!-- 这里填写的值需要注意：最前面加上"/"表示项目根路径，而Eclipse中Maven项目将 java包和resources包映射的路径都是"WEB-INF/classes"，所以这里前面是"/WEB-INF/classes"，尝试了写"classes/spring/springmvc-config.xml"这样的相对路径无效 -->
-            <param-value>/WEB-INF/classes/spring/springmvc-config.xml</param-value>
-        </init-param>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <!-- 让Spring MVC的前端控制器拦截所有请求 -->
-    <servlet-mapping>
+  <servlet>
+    <servlet-name>springmvc</servlet-name>
+    <servlet-class>
+        org.springframework.web.servlet.DispatcherServlet
+    </servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <!-- "classpath:"表示从项目代码根路径下寻找 -->
+      <param-value>classpath:spring/springmvc-config.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <!-- 让Spring MVC的前端控制器拦截所有请求 -->
+     <servlet-mapping>
         <servlet-name>springmvc</servlet-name>
         <url-pattern>/</url-pattern>
-    </servlet-mapping>
+     </servlet-mapping>
+  
+  <!-- 编码过滤器 -->
+     <filter>
+        <filter-name>characterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+                <param-name>encoding</param-name>
+                <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>characterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+  
     
     <display-name>JavaLearningForum</display-name>
 </web-app>

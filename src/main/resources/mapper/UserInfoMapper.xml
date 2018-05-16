@@ -98,7 +98,7 @@
   
   
   
-    <select id="selectByUsernameAndPassword" parameterType="com.duyanhan.forum.domain.UserInfo" resultMap="com.duyanhan.forum.domain.UserInfo">
+    <select id="selectByUsernameAndPassword" parameterType="com.duyanhan.forum.domain.UserInfo" resultType="com.duyanhan.forum.domain.UserInfo">
       select * from userinfo where username=#{username} and password=#{password}
     </select>
   
