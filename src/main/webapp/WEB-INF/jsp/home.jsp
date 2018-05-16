@@ -112,21 +112,21 @@
 					</c:if>
 					<!-- 当用户登录之后 -->
 					<c:if test="${!empty userInfo }">
-							<div class="navbar-item has-dropdown is-hoverable">
-								<a class="navbar-link" href="/documentation/overview/start/">${userInfo.username }</a>
-								<div class="navbar-dropdown is-boxed">
-									<a class="navbar-item" href="https://bulma.io/documentation/modifiers/syntax/">设置个人信息 </a> 
-									<a class="navbar-item" href="https://bulma.io/documentation/columns/basics/">修改密码</a>
-									<hr class="navbar-divider">
-									<a class="navbar-item" href="/documentation/overview/start/">帖子与回复管理</a>
-									<hr class="navbar-divider">
-									<a class="navbar-item" href="/documentation/overview/start/">注销账号 </a>
-								</div>
+						<div class="navbar-item has-dropdown is-hoverable">
+							<a class="navbar-link" href="/documentation/overview/start/">${userInfo.username }</a>
+							<div class="navbar-dropdown is-boxed">
+								<a class="navbar-item" href="https://bulma.io/documentation/modifiers/syntax/">设置个人信息 </a> 
+								<a class="navbar-item" href="https://bulma.io/documentation/columns/basics/">修改密码</a>
+								<hr class="navbar-divider">
+								<a class="navbar-item" href="/documentation/overview/start/">帖子与回复管理</a>
+								<hr class="navbar-divider">
+								<a class="navbar-item" href="/documentation/overview/start/">注销账号 </a>
 							</div>
-						</c:if>
-					</div>
+						</div>
+					</c:if>
 				</div>
 			</div>
+		</div>
 	</nav>
 	<div class="container blank_distance">
 		<section class="columns">
