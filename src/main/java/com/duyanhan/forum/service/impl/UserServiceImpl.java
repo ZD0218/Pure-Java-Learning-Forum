@@ -1,10 +1,13 @@
 package com.duyanhan.forum.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.duyanhan.forum.dao.UserInfoMapper;
-import com.duyanhan.forum.domain.UserInfo;
+import com.duyanhan.forum.dao.UserMapper;
+import com.duyanhan.forum.entity.User;
+import com.duyanhan.forum.entity.UserExample;
 import com.duyanhan.forum.service.UserService;
 
 
@@ -12,13 +15,15 @@ import com.duyanhan.forum.service.UserService;
 public class UserServiceImpl implements UserService {
 	
 	@Autowired
-	private UserInfoMapper userInfoMapper;
+	private UserMapper userMapper;
 
 	@Override
-	public boolean login(UserInfo userInfo) {
+	public boolean login(User user) {
 		
-		UserInfo user = userInfoMapper.selectByUsernameAndPassword(userInfo);
-		if(user != null)
+		UserExample userExample = new UserExample();
+		userExample.createCriteria().andUsernameEqualTo(user.getUsername()).andPasswordEqualTo(user.getPassword());
+		List<User> users = userMapper.selectByExample(userExample);
+		if(users != null && users.size() > 0)
 		{
 			return true;
 		}

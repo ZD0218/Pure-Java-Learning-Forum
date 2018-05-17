@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.duyanhan.forum.domain.UserInfo;
+import com.duyanhan.forum.entity.User;
 
 /**
  * 通用控制器
@@ -31,8 +31,8 @@ public class CommonController {
 	// 登录页面
 	@RequestMapping(value="/loginForm", method=RequestMethod.GET)
 	public String loginForm(Model model) {
-		UserInfo userInfo = new UserInfo();
-		model.addAttribute("userInfo", userInfo);
+		User user = new User();
+		model.addAttribute("user", user);
 		return "loginForm";
 	}
 	

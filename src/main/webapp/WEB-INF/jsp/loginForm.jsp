@@ -25,7 +25,7 @@
 						<div class="column is-offset-one-quarter is-half">
 						
 						
-						<form:form modelAttribute="userInfo" method="post" action="${pageContext.request.contextPath }/user/login">
+						<form:form modelAttribute="user" method="post" action="${pageContext.request.contextPath }/user/login">
 						
 							<!-- 用户名标签及输入框 -->
 							<div class="field">

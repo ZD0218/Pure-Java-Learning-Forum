@@ -1,6 +1,6 @@
 package com.duyanhan.forum.service;
 
-import com.duyanhan.forum.domain.UserInfo;
+import com.duyanhan.forum.entity.User;
 
 /**
  * 用户业务
@@ -11,8 +11,8 @@ public interface UserService {
 	
 	/**
 	 * 登录业务
-	 * @param userInfo
+	 * @param user
 	 * @return
 	 */
-	boolean login(UserInfo userInfo);
+	boolean login(User user);
 }
