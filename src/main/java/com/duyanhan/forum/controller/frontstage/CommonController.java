@@ -1,4 +1,4 @@
-package com.duyanhan.forum.controller;
+package com.duyanhan.forum.controller.frontstage;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

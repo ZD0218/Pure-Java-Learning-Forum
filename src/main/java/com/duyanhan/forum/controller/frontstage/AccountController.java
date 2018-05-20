@@ -1,4 +1,4 @@
-package com.duyanhan.forum.controller;
+package com.duyanhan.forum.controller.frontstage;
 
 import javax.servlet.http.HttpSession;
 
