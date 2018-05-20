@@ -41,8 +41,9 @@ public class AccountController {
 
 	@RequestMapping(value = "/logout")
 	public String logout(HttpSession session) {
+		String currentUser = (String) session.getAttribute("currentUser");
 		session.removeAttribute("currentUser");
-		logger.info("用户{"+session.getAttribute("currentUser")+"}注销成功");
+		logger.info("用户{"+currentUser+"}注销成功");
 		return "home";
 	}
 }

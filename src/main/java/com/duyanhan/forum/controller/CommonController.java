@@ -47,4 +47,10 @@ public class CommonController {
 	public String postList() {
 		return "postList";
 	}
+	
+	// 帖子页面
+	@RequestMapping(value="/post")
+	public String post() {
+		return "post";
+	}
 }
