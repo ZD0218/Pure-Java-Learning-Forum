@@ -7,42 +7,63 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.duyanhan.forum.entity.User;
 import com.duyanhan.forum.service.UserService;
 
 @Controller
-@RequestMapping(value = "/user")
+@RequestMapping(value= "/user")
+@SessionAttributes(value= {"currentUser"}, types= {String.class})
 public class AccountController {
 	private static final Log logger = LogFactory.getLog(AccountController.class);
 	
 	@Autowired
 	private UserService userService;
 
+	// 用户登录
 	@RequestMapping(value = "/login")
-	public String login(
-			User user,
-			HttpSession session,
-			Model model) {
+	public String  login(User user, Model model) {
 		// 获取登录返回结果
 		boolean loginResult = userService.login(user);
-		// 如果登录成功
+		
 		if (loginResult) {
-			// 向前台传入当前用户名
-			session.setAttribute("currentUser", user.getUsername());
+			// 登录成功
+			model.addAttribute("currentUser", user.getUsername());
 			logger.info("用户{"+user.getUsername()+"}登录成功，用户名存入session");
+			return "home";
 		}
 		else {
+			// 登录失败
 			logger.error("用户{"+user.getUsername()+"}登录失败，数据库查无此人");
+			return "loginForm";
 		}
-		return "home";
 	}
 
+	// 用户注册
+	@RequestMapping(value = "/register")
+	public String register(User user) {
+		// 获取注册返回结果
+		boolean registerResult = userService.register(user);
+		if (registerResult) {
+			// 注册成功
+			logger.info("用户{"+user.getUsername()+"}注册成功");
+			return "loginForm";
+		}
+		else {
+			// 注册成功
+			logger.info("用户{"+user.getUsername()+"}注册失败");
+			return "registerForm";
+		}
+	}
+	
+	// 用户注销
 	@RequestMapping(value = "/logout")
-	public String logout(HttpSession session) {
-		String currentUser = (String) session.getAttribute("currentUser");
-		session.removeAttribute("currentUser");
+	public String logout(@ModelAttribute("currentUser") String currentUser, SessionStatus sessionStatus) {
+		sessionStatus.setComplete();
 		logger.info("用户{"+currentUser+"}注销成功");
 		return "home";
 	}

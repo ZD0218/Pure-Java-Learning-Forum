@@ -38,7 +38,9 @@ public class CommonController {
 	
 	// 注册页面
 	@RequestMapping(value="/registerForm")
-	public String registerForm() {
+	public String registerForm(Model model) {
+		User user = new User();
+		model.addAttribute("user", user);
 		return "registerForm";
 	}
 	

@@ -17,7 +17,7 @@
 		<div class="hero-body">
 			<section class="container">
 				<div class="container">
-					<div>用户登录</div>
+					<div>用户注册</div>
 				</div>
 				<div class="container">
 					<div class="columns">
@@ -25,7 +25,7 @@
 						<div class="column is-offset-one-quarter is-half">
 						
 						
-						<form:form modelAttribute="user" method="post" action="${pageContext.request.contextPath }/user/login">
+						<form:form modelAttribute="user" method="post" action="${pageContext.request.contextPath }/user/register">
 						
 							<!-- 用户名标签及输入框 -->
 							<div class="field">
@@ -52,10 +52,10 @@
 							<!-- 登录表单提交按钮 -->
 							<div class="field is-grouped">
 								<div class="control">
-									<input class="button is-dark is-outlined" type="submit" value="登录"/>
+									<input class="button is-dark is-outlined" type="submit" value="注册"/>
 								</div>
 								<div class="control">
-									<a href="${pageContext.request.contextPath }/registerForm" class="button is-text">注册</a>
+									<a href="${pageContext.request.contextPath }/loginForm" class="button is-text">登录</a>
 								</div>
 							</div>
 							<!-- <p class="help is-danger">用户名或密码错误</p> -->
