@@ -14,6 +14,13 @@
 	href="${pageContext.request.contextPath}/css/extra.css" />
 <script defer
 	src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<!-- 控制浮动按钮的样式和js文件 -->
+<link
+	href="${pageContext.request.contextPath}/plugins/material-floating-button/mfb.css"
+	rel="stylesheet">
+<script defer
+	src="${pageContext.request.contextPath}/plugins/material-floating-button/mfb.js"></script>
+<link href="${pageContext.request.contextPath}/plugins/Ionicons/css/ionicons.min.css" rel="stylesheet">
 </head>
 <body>
 	<!-- 包含导航条 -->
@@ -30,7 +37,8 @@
 					</div>
 				</div>
 				<div class="box">
-					<a class="has-text-success" href="${pageContext.request.contextPath }/postList"> <b>Java语言基础版块</b>
+					<a class="has-text-success"
+						href="${pageContext.request.contextPath }/postList"> <b>Java语言基础版块</b>
 						<div>
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque
 								risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum
@@ -119,6 +127,21 @@
 			</div>
 		</section>
 	</div>
+	<!-- 悬浮按钮 -->
+	<ul id="menu" class="mfb-component--br   mfb-slidein-spring "
+		data-mfb-toggle="click" style="display: block;">
+		<li class="mfb-component__wrap"><a href="#"
+			class="mfb-component__button--main"> <i
+				class="mfb-component__main-icon--resting ion-plus-round"></i> <i
+				class="mfb-component__main-icon--active ion-close-round"></i>
+		</a>
+			<ul class="mfb-component__list">
+				<li><a href="" data-mfb-label="快速发帖"
+					class="mfb-component__button--child"> <i
+						class="mfb-component__child-icon ion-edit"></i>
+				</a></li>
+			</ul></li>
+	</ul>
 	<!--分页-->
 	<div class="container">
 		<div class="columns">

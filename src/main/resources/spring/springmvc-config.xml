@@ -21,6 +21,7 @@
     <mvc:resources location="/resources/css/" mapping="/css/**"></mvc:resources>
     <mvc:resources location="/resources/js/" mapping="/js/**"></mvc:resources>
     <mvc:resources location="/resources/images/" mapping="/images/**"></mvc:resources>
+    <mvc:resources location="/resources/plugins/" mapping="/plugins/**"></mvc:resources>
 
 
     <!-- 视图解析器 -->

@@ -10,11 +10,13 @@
 	href="${pageContext.request.contextPath }/css/bulma.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/extra.css" />
-<!--悬浮按钮插件-->
-<link href="plugins/material-floating-button/mfb.min.css"
+<!-- 控制浮动按钮的样式和js文件 -->
+<link
+	href="${pageContext.request.contextPath}/plugins/material-floating-button/mfb.css"
 	rel="stylesheet">
-<script src="plugins/material-floating-button/mfb.min.js"></script>
-<link href="plugins/Ionicons/css/ionicons.min.css" rel="stylesheet">
+<script defer
+	src="${pageContext.request.contextPath}/plugins/material-floating-button/mfb.js"></script>
+<link href="${pageContext.request.contextPath}/plugins/Ionicons/css/ionicons.min.css" rel="stylesheet">
 </head>
 <body>
 	<!-- 包含导航条 -->
@@ -204,26 +206,29 @@
 		</section>
 
 	</div>
+	<!-- 悬浮按钮 -->
 	<ul id="menu" class="mfb-component--br   mfb-slidein-spring "
-		data-mfb-toggle="hover" style="display: block;">
+		data-mfb-toggle="click" style="display: block;">
 		<li class="mfb-component__wrap"><a href="#"
 			class="mfb-component__button--main"> <i
 				class="mfb-component__main-icon--resting ion-plus-round"></i> <i
 				class="mfb-component__main-icon--active ion-close-round"></i>
 		</a>
 			<ul class="mfb-component__list">
-				<li><a
-					href="https://github.com/nobitagit/material-floating-button/"
-					data-mfb-label="写评论" class="mfb-component__button--child"> <i
+				<li><a href="" data-mfb-label="快速回帖"
+					class="mfb-component__button--child"> <i
+						class="mfb-component__child-icon ion-chatboxes"></i>
+				</a></li>
+				<li><a href="" data-mfb-label="快速发帖"
+					class="mfb-component__button--child"> <i
 						class="mfb-component__child-icon ion-edit"></i>
 				</a></li>
-				<li><a href="https://github.com/nobitagit"
-					data-mfb-label="收藏此贴" class="mfb-component__button--child"> <i
+				<li><a href="" data-mfb-label="收藏此贴"
+					class="mfb-component__button--child"> <i
 						class="mfb-component__child-icon ion-heart"></i>
 				</a></li>
-				<li><a
-					href="http://twitter.com/share?text=Check this material floating button component!&amp;url=http://nobitagit.github.io/material-floating-button/&amp;hashtags=material,design,button,css"
-					data-mfb-label="为此贴点赞" class="mfb-component__button--child"> <i
+				<li><a href="" data-mfb-label="为此贴点赞"
+					class="mfb-component__button--child"> <i
 						class="mfb-component__child-icon ion-thumbsup"></i>
 				</a></li>
 			</ul></li>
