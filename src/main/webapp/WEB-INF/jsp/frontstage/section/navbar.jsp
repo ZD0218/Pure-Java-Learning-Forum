@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<script defer
+	src="${pageContext.request.contextPath}/js/jquery3.2.1.min.js"></script>
+<script defer
+	src="${pageContext.request.contextPath}/js/extra.js"></script>
 	<nav class="navbar is-fixed-top">
 		<div class="bd-special-shadow"
 			style="opacity: 1; transform: scaleY(1);"></div>
