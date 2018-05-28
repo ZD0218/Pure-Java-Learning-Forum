@@ -26,24 +26,34 @@
 	<jsp:include page="section/navbar.jsp" />
 	<div class="container blank_distance">
 		<div class="box">
-			<input class="input is-black" type="text" placeholder="请在此处填入标题">
-			<hr>
-			<div id="summernote"></div>
-			<hr>
-			<div class="select">
-				<select class="is-hovered">
-					<option>选择发帖版块：</option>
-					<option>With options</option>
-				</select>
-			</div>
-			<input class="button is-black" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;开始发帖&nbsp;&nbsp;&nbsp;&nbsp;">
+			<form method="post" action="">
+				<!-- 帖子标题 -->
+				<input id="title" name="title" class="input is-dark" type="text" placeholder="请在此处填入标题">
+				<hr>
+				<!-- 帖子内容 -->
+				<input id="content" name="content" type="text"></input>
+				<hr>
+				<!-- 发帖版块 -->
+				<div class="select">
+					<select id="block_id" name="block_id" class="is-hovered">
+						<option>选择发帖版块：</option>
+						<option>With options</option>
+					</select>
+				</div>
+				<!-- 发帖时间 -->
+				<input id="postTime" name="postTime" type="hidden">
+				<!-- 更新时间 -->
+				<input id="updateTime" name="updateTime" type="hidden">
+				<!-- 提交按钮 -->
+				<input class="button is-black" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;开始发帖&nbsp;&nbsp;&nbsp;&nbsp;">
+			</form>
 		</div>
 
 	</div>
 </body>
 <script type="text/javascript">
 	function showPostForm() {
-		$("#summernote").summernote({
+		$("#content").summernote({
 			placeholder : '请在此处填入正文',
 			tabsize : 4,
 			height : 500,
