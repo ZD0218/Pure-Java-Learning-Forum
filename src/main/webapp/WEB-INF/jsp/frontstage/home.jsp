@@ -31,7 +31,7 @@
 				<div class="box">
 					<div class="breadcrumb is-small" aria-label="breadcrumbs">
 						<ul>
-							<li><a href="#">主页</a></li>
+							<li><a href="${pageContext.request.contextPath }/home">主页</a></li>
 							<li class="is-active"><a href="#" aria-current="page">版块</a></li>
 						</ul>
 					</div>
@@ -130,17 +130,19 @@
 	<!-- 悬浮按钮 -->
 	<ul id="menu" class="mfb-component--br   mfb-slidein-spring "
 		data-mfb-toggle="click" style="display: block;">
-		<li class="mfb-component__wrap"><a href="#"
-			class="mfb-component__button--main"> <i
-				class="mfb-component__main-icon--resting ion-plus-round"></i> <i
-				class="mfb-component__main-icon--active ion-close-round"></i>
-		</a>
+		<li class="mfb-component__wrap">
+			<a href="#" class="mfb-component__button--main"> 
+				<i class="mfb-component__main-icon--resting ion-plus-round"></i>
+				<i class="mfb-component__main-icon--active ion-close-round"></i>
+			</a>
 			<ul class="mfb-component__list">
-				<li><a href="" data-mfb-label="快速发帖"
-					class="mfb-component__button--child"> <i
-						class="mfb-component__child-icon ion-edit"></i>
-				</a></li>
-			</ul></li>
+				<li>
+					<a href="" data-mfb-label="快速发帖" class="mfb-component__button--child">
+						<i class="mfb-component__child-icon ion-edit"></i>
+					</a>
+				</li>
+			</ul>
+		</li>
 	</ul>
 	<!--分页-->
 	<div class="container">
