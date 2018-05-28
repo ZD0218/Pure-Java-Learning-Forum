@@ -3,10 +3,35 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- 控制折叠按钮的js文件 -->
-<script defer
-	src="${pageContext.request.contextPath}/js/jquery3.2.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery3.2.1.min.js"></script>
 <script defer src="${pageContext.request.contextPath}/js/extra.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/js/jquery3.2.1.min.js"></script> --%>
+<script type="text/javascript">
+	<!-- 当页面加载完成之后，加载版块列表 -->
+	$(document).ready(function() {
+		getNavBlockTitleList();
+	});
 
+	function getNavBlockTitleList() {
+		$.ajax({
+				url:"${pageContext.request.contextPath}/json/blockTitleList",
+				dataType:"json",
+				type:"post",
+				contentType:"application/json",
+				async:true,
+				success:function(data) {
+					var blockTitleListStr = "<a class=\"navbar-item\" href=\"#\">即时问答版块 </a><hr class=\"navbar-divider\">";
+					$.each(data, function(index, block){
+						blockTitleListStr = blockTitleListStr + "<a class=\"navbar-item\" href=\"#\">" +block+ "</a>";
+					});
+					$("#navBlockTitleList").html(blockTitleListStr);
+				},
+				error:function(){
+					alert("版块列表请求失败");
+				}
+			});
+	}
+</script>
 <!-- 顶端导航条 -->
 <nav class="navbar is-fixed-top">
 	<div class="bd-special-shadow"
@@ -30,41 +55,10 @@
 				<a class="navbar-item"
 					href="${pageContext.request.contextPath}/home"> 主页 </a>
 				<div class="navbar-item has-dropdown is-hoverable">
-					<a class="navbar-link" href="/documentation/overview/start/">
+					<a class="navbar-link" href="#">
 						版块导航 </a>
-					<div class="navbar-dropdown is-boxed">
-						<a class="navbar-item" href="/documentation/overview/start/">
-							即时问答版块 </a>
-						<hr class="navbar-divider">
-						<a class="navbar-item"
-							href="https://bulma.io/documentation/modifiers/syntax/">
-							语言基础版块 </a> <a class="navbar-item"
-							href="https://bulma.io/documentation/columns/basics/"> 面向对象版块
-						</a> <a class="navbar-item"
-							href="https://bulma.io/documentation/layout/container/"> 集合版块
-						</a> <a class="navbar-item"
-							href="https://bulma.io/documentation/form/general/"> 泛型版块 </a> <a
-							class="navbar-item"
-							href="https://bulma.io/documentation/elements/box/"> 常用类库版块 </a>
-						<a class="navbar-item"
-							href="https://bulma.io/documentation/components/breadcrumb/">
-							异常处理版块 </a> <a class="navbar-item"
-							href="https://bulma.io/documentation/components/breadcrumb/">
-							AWT编程版块 </a> <a class="navbar-item"
-							href="https://bulma.io/documentation/components/breadcrumb/">
-							Swing编程版块 </a> <a class="navbar-item"
-							href="https://bulma.io/documentation/components/breadcrumb/">
-							JDBC编程版块 </a> <a class="navbar-item"
-							href="https://bulma.io/documentation/components/breadcrumb/">
-							注解编程版块 </a> <a class="navbar-item"
-							href="https://bulma.io/documentation/components/breadcrumb/">
-							输入/输出编程版块 </a> <a class="navbar-item"
-							href="https://bulma.io/documentation/components/breadcrumb/">
-							多线程编程版块 </a> <a class="navbar-item"
-							href="https://bulma.io/documentation/components/breadcrumb/">
-							网络编程版块 </a> <a class="navbar-item"
-							href="https://bulma.io/documentation/components/breadcrumb/">
-							类加载/反射编程版块 </a>
+					<div id="navBlockTitleList" class="navbar-dropdown is-boxed">
+						<!-- 这里是导航条的版块列表 -->
 					</div>
 				</div>
 			</div>
@@ -124,3 +118,5 @@
 		</div>
 	</div>
 </nav>
+
+

@@ -17,8 +17,6 @@ import com.duyanhan.forum.service.UserService;
 @Service("userService")
 public class UserServiceImpl implements UserService {
 	
-	private static final Log logger = LogFactory.getLog(UserServiceImpl.class);
-	
 	@Autowired
 	private UserMapper userMapper;
 
