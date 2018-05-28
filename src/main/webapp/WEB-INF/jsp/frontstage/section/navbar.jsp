@@ -2,10 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!-- 控制折叠按钮的js文件 -->
-<script src="${pageContext.request.contextPath}/js/jquery3.2.1.min.js"></script>
-<script defer src="${pageContext.request.contextPath}/js/extra.js"></script>
-<%-- <script src="${pageContext.request.contextPath}/js/jquery3.2.1.min.js"></script> --%>
 <script type="text/javascript">
 	<!-- 当页面加载完成之后，加载版块列表 -->
 	$(document).ready(function() {

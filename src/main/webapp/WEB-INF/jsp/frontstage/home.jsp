@@ -7,19 +7,21 @@
 <meta charset="UTF-8">
 <title>主页</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/bulma.min.css"
-	type="text/css" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/extra.css" />
-<script defer
-	src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<!-- bulma框架样式 -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bulma.min.css" type="text/css" />
+<!-- 我自己的页面样式 -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/extra.css" />
+<!-- jquery文件 -->
+<script src="${pageContext.request.contextPath}/js/jquery3.2.1.min.js"></script>
+<!-- 导航栏Js文件 -->
+<script src="${pageContext.request.contextPath}/js/navbar.js"></script>
+<!-- bulma框架引入的字体样式 -->
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
 <!-- 控制浮动按钮的样式和js文件 -->
-<link
-	href="${pageContext.request.contextPath}/plugins/material-floating-button/mfb.css"
-	rel="stylesheet">
-<script defer
-	src="${pageContext.request.contextPath}/plugins/material-floating-button/mfb.js"></script>
+<link href="${pageContext.request.contextPath}/plugins/material-floating-button/mfb.css" rel="stylesheet">
+<script defer src="${pageContext.request.contextPath}/plugins/material-floating-button/mfb.js"></script>
+<!-- 我另行导入的字体样式 -->
 <link href="${pageContext.request.contextPath}/plugins/Ionicons/css/ionicons.min.css" rel="stylesheet">
 </head>
 <body>

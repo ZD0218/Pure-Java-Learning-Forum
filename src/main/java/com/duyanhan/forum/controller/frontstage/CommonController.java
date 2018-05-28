@@ -55,4 +55,10 @@ public class CommonController {
 	public String post() {
 		return "post";
 	}
+	
+	// 帖子书写页面
+	@RequestMapping(value="/postForm")
+	public String postForm() {
+		return "postForm";
+	}
 }
