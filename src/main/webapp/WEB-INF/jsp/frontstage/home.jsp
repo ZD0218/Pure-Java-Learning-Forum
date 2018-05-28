@@ -133,13 +133,13 @@
 	<ul id="menu" class="mfb-component--br   mfb-slidein-spring "
 		data-mfb-toggle="click" style="display: block;">
 		<li class="mfb-component__wrap">
-			<a href="#" class="mfb-component__button--main"> 
+			<a class="mfb-component__button--main"> 
 				<i class="mfb-component__main-icon--resting ion-plus-round"></i>
 				<i class="mfb-component__main-icon--active ion-close-round"></i>
 			</a>
 			<ul class="mfb-component__list">
 				<li>
-					<a href="" data-mfb-label="快速发帖" class="mfb-component__button--child">
+					<a href="${pageContext.request.contextPath}/postForm" data-mfb-label="快速发帖" class="mfb-component__button--child">
 						<i class="mfb-component__child-icon ion-edit"></i>
 					</a>
 				</li>
