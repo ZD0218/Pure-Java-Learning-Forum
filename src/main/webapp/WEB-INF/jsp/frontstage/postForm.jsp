@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,27 +27,29 @@
 	<jsp:include page="section/navbar.jsp" />
 	<div class="container blank_distance">
 		<div class="box">
-			<form method="post" action="">
+			<form:form modelAttribute="post" method="post" action="${pageContext.request.contextPath }/post">
 				<!-- 帖子标题 -->
-				<input id="title" name="title" class="input is-dark" type="text" placeholder="请在此处填入标题">
+				<form:input path="title" cssClass="input is-dark" type="text" placeholder="请在此处填入标题"/>
 				<hr>
 				<!-- 帖子内容 -->
-				<input id="content" name="content" type="text"></input>
+				<form:input path="content" type="text"/>
 				<hr>
 				<!-- 发帖版块 -->
 				<div class="select">
-					<select id="block_id" name="block_id" class="is-hovered">
+					<form:select path="blockId" cssClass="is-hovered">
 						<option>选择发帖版块：</option>
-						<option>With options</option>
-					</select>
+						<form:options items="${blockList }" itemLabel="title" itemValue="id"/>
+					</form:select>
 				</div>
+				<!-- 发帖人-->
+				<form:input path="userId" type="hidden"/>
 				<!-- 发帖时间 -->
-				<input id="postTime" name="postTime" type="hidden">
+				<form:input path="posttime" type="hidden"/>
 				<!-- 更新时间 -->
-				<input id="updateTime" name="updateTime" type="hidden">
+				<form:input path="updatetime" type="hidden"/>
 				<!-- 提交按钮 -->
 				<input class="button is-black" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;开始发帖&nbsp;&nbsp;&nbsp;&nbsp;">
-			</form>
+			</form:form>
 		</div>
 
 	</div>

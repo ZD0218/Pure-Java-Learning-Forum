@@ -1,6 +1,5 @@
 package com.duyanhan.forum.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,6 @@ public class BlockServiceImpl implements BlockService {
 		// 优先按照等级排序，再按名称排序
 		blockExample.setOrderByClause("level ASC, `title` ASC");
 		List<Block> blockList = blockMapper.selectByExample(blockExample);
-		
 		return blockList;
 	}
 

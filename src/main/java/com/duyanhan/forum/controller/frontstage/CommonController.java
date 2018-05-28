@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.duyanhan.forum.entity.Post;
 import com.duyanhan.forum.entity.User;
 
 /**
@@ -50,15 +51,5 @@ public class CommonController {
 		return "postList";
 	}
 	
-	// 帖子页面
-	@RequestMapping(value="/post")
-	public String post() {
-		return "post";
-	}
 	
-	// 帖子书写页面
-	@RequestMapping(value="/postForm")
-	public String postForm() {
-		return "postForm";
-	}
 }
