@@ -18,7 +18,7 @@
 				success:function(data) {
 					var blockTitleListStr = "<a class=\"navbar-item\" href=\"#\">即时问答版块 </a><hr class=\"navbar-divider\">";
 					$.each(data, function(index, block){
-						blockTitleListStr = blockTitleListStr + "<a class=\"navbar-item\" href=\"#\">" +block+ "</a>";
+						blockTitleListStr = blockTitleListStr + "<a id=" + block.id + " class=\"navbar-item\" href=\"#\">" + block.title + "</a>";
 					});
 					$("#navBlockTitleList").html(blockTitleListStr);
 				},
