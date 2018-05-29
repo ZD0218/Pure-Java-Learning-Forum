@@ -45,9 +45,9 @@
 				<!-- 发帖人-->
 				<form:input path="userId" type="hidden"/>
 				<!-- 发帖时间 -->
-				<form:input path="posttime" type="date"/>
+				<form:input path="posttime" type="date" style="display:none;"/>
 				<!-- 更新时间 -->
-				<form:input path="updatetime" type="date"/>
+				<form:input path="updatetime" type="date" style="display:none;"/>
 				<!-- 提交按钮 -->
 				<input class="button is-black" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;开始发帖&nbsp;&nbsp;&nbsp;&nbsp;">
 			</form:form>
@@ -68,10 +68,35 @@
 		showPostForm();
 	});
 	
+	// 获取当前日期
+	function getCurrentTime() {
+        var nowtime = new Date();
+        var year = nowtime.getFullYear();
+        var month = padleft0(nowtime.getMonth() + 1);
+        var day = padleft0(nowtime.getDate());
+        return year + "-" + month + "-" + day;
+    }
+    // 补齐两位数
+    function padleft0(obj) {
+        return obj.toString().replace(/^[0-9]{1}$/, "0" + obj);
+    }
+	
+	/* 表单提交事件 */
 	$("form").submit(function(e) {
-		// 提交之前，先获取summernote的div中的内容到content中
+		// 提交之前，执行以下动作
+		
+		// 先获取summernote的div中的内容到content中
 		var htmlContent = $("#summernote").summernote("code");
+		alert(htmlContent);
 		$("#content").val(htmlContent);
+		
+		// 获取时间
+		var now = getCurrentTime();
+		
+		// 发帖时,发帖时间和更新时间都一致
+		$("#posttime").val(now);
+		$("#updatetime").val(now);
+		
 	});
 </script>
 </html>
