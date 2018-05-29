@@ -42,7 +42,6 @@ public class PostController {
 	// 发表帖子
 	@RequestMapping(value = "/post")
 	public String post(Post post) {
-		System.out.println("hhe ");
 		boolean postResult = postService.post(post);
 		if(postResult) {
 			logger.info("发表成功");

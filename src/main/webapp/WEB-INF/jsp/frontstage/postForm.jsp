@@ -32,7 +32,8 @@
 				<form:input path="title" cssClass="input is-dark" type="text" placeholder="请在此处填入标题"/>
 				<hr>
 				<!-- 帖子内容 -->
-				<form:input path="content" type="text"/>
+				<div id="summernote"></div>
+				<form:input path="content" type="hidden"/>
 				<hr>
 				<!-- 发帖版块 -->
 				<div class="select">
@@ -56,7 +57,7 @@
 </body>
 <script type="text/javascript">
 	function showPostForm() {
-		$("#content").summernote({
+		$("#summernote").summernote({
 			placeholder : '请在此处填入正文',
 			tabsize : 4,
 			height : 500,
@@ -65,6 +66,12 @@
 	}
 	$(document).ready(function() {
 		showPostForm();
+	});
+	
+	$("form").submit(function(e) {
+		// 提交之前，先获取summernote的div中的内容到content中
+		var htmlContent = $("#summernote").summernote("code");
+		$("#content").val(htmlContent);
 	});
 </script>
 </html>
