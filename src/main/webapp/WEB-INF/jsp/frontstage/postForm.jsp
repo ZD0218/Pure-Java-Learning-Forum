@@ -87,7 +87,7 @@
 		
 		// 先获取summernote的div中的内容到content中
 		var htmlContent = $("#summernote").summernote("code");
-		alert(htmlContent);
+		alert(htmlContent.length);
 		$("#content").val(htmlContent);
 		
 		// 获取时间
