@@ -19,7 +19,7 @@ create table user(
 create table block(
 	id int not null auto_increment,
 	title varchar(20) not null,
-	content varchar(500) not null,
+	content text not null,
 	level int not NULL,
 	primary key(id)
 );
@@ -28,7 +28,7 @@ create table block(
 create table post(
 	id int not null auto_increment,
 	title varchar(80) not null,
-	content varchar(2000),
+	content text,
 	postTime Date not null,
 	updateTime Date not null,
 	block_id int not null,
@@ -41,7 +41,7 @@ create table post(
 -- 创建回帖表：comment
 create table comment(
 	id int not null auto_increment,
-	content varchar(500),
+	content text,
 	postTime Date not null,
 	updateTime Date not null,
 	post_id int not null,
@@ -51,7 +51,7 @@ create table comment(
 	foreign key(user_id) references user(id)
 );
 
--- 创建黑名单表：blacklist
+-- 创建黑名单表：blackuser
 create table blacklist(
 	id int not null auto_increment,
 	user_id int not null,
