@@ -95,7 +95,7 @@
 				<!-- 当用户登录之后 -->
 				<c:if test="${!empty sessionScope.currentUser }">
 					<div class="navbar-item has-dropdown is-hoverable">
-						<a class="navbar-link" href="/documentation/overview/start/">${sessionScope.currentUser }</a>
+						<a class="navbar-link" href="/documentation/overview/start/">${sessionScope.currentUser.username }</a>
 						<div class="navbar-dropdown is-boxed">
 							<a class="navbar-item"
 								href="https://bulma.io/documentation/modifiers/syntax/">设置个人信息

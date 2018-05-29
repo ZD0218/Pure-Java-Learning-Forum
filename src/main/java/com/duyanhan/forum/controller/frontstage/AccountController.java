@@ -15,7 +15,7 @@ import com.duyanhan.forum.service.UserService;
 
 @Controller
 @RequestMapping(value= "/user")
-@SessionAttributes(value= {"currentUser"}, types= {String.class})
+@SessionAttributes(value= {"currentUser"}, types= {com.duyanhan.forum.entity.User.class})
 public class AccountController {
 	private static final Log logger = LogFactory.getLog(AccountController.class);
 	
@@ -27,16 +27,16 @@ public class AccountController {
 	public String  login(User user, Model model) {
 		// 获取登录返回结果
 		boolean loginResult = userService.login(user);
-		
+		User currentUser = userService.getUserByUsernameAndPassword(user);
 		if (loginResult) {
 			// 登录成功
-			model.addAttribute("currentUser", user.getUsername());
-			logger.info("用户{"+user.getUsername()+"}登录成功，用户名存入session");
+			model.addAttribute("currentUser", currentUser);
+			logger.info("用户{"+currentUser.getUsername()+"}登录成功，用户存入session");
 			return "home";
 		}
 		else {
 			// 登录失败
-			logger.error("用户{"+user.getUsername()+"}登录失败，数据库查无此人");
+			logger.error("用户{"+currentUser.getUsername()+"}登录失败，数据库查无此人");
 			return "loginForm";
 		}
 	}
@@ -60,9 +60,9 @@ public class AccountController {
 	
 	// 用户注销
 	@RequestMapping(value = "/logout")
-	public String logout(@ModelAttribute("currentUser") String currentUser, SessionStatus sessionStatus) {
+	public String logout(@ModelAttribute("currentUser") User currentUser, SessionStatus sessionStatus) {
 		sessionStatus.setComplete();
-		logger.info("用户{"+currentUser+"}注销成功");
+		logger.info("用户{"+currentUser.getUsername()+"}注销成功");
 		return "home";
 	}
 }

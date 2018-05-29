@@ -7,15 +7,19 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.duyanhan.forum.entity.Block;
 import com.duyanhan.forum.entity.Post;
+import com.duyanhan.forum.entity.User;
 import com.duyanhan.forum.service.BlockService;
 import com.duyanhan.forum.service.PostService;
 
 @Controller
+@SessionAttributes(value= {"currentUser"}, types= {com.duyanhan.forum.entity.User.class})
 public class PostController {
 	private static final Log logger = LogFactory.getLog(PostController.class);
 	
@@ -25,9 +29,10 @@ public class PostController {
 	private PostService	postService;
 
 	// 发帖页面
-	@RequestMapping(value = "/postForm", method = RequestMethod.GET)
-	public String postForm(Model model) {
+	@RequestMapping(value = "/postForm")
+	public String postForm(@ModelAttribute("currentUser") User currentUser, Model model) {
 		Post post = new Post();
+		post.setUserId(currentUser.getId());
 		List<Block> blockList = blockService.getBlockListByLevel();
 		model.addAttribute("post", post);
 		model.addAttribute("blockList", blockList);

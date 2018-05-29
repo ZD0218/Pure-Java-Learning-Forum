@@ -50,4 +50,12 @@ public class User {
     public void setPersonaldescription(String personaldescription) {
         this.personaldescription = personaldescription == null ? null : personaldescription.trim();
     }
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", sex=" + sex
+				+ ", personaldescription=" + personaldescription + "]";
+	}
+    
+    
 }

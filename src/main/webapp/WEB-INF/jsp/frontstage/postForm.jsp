@@ -44,9 +44,9 @@
 				<!-- 发帖人-->
 				<form:input path="userId" type="hidden"/>
 				<!-- 发帖时间 -->
-				<form:input path="posttime" type="hidden"/>
+				<form:input path="posttime" type="date"/>
 				<!-- 更新时间 -->
-				<form:input path="updatetime" type="hidden"/>
+				<form:input path="updatetime" type="date"/>
 				<!-- 提交按钮 -->
 				<input class="button is-black" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;开始发帖&nbsp;&nbsp;&nbsp;&nbsp;">
 			</form:form>

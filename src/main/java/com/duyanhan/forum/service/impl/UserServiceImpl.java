@@ -45,4 +45,18 @@ public class UserServiceImpl implements UserService {
 		return false;
 	}
 
+	@Override
+	public User getUserByUsernameAndPassword(User user) {
+		UserExample userExample = new UserExample();
+		userExample.createCriteria().andUsernameEqualTo(user.getUsername()).andPasswordEqualTo(user.getPassword());
+		List<User> users = userMapper.selectByExample(userExample);
+		if(users != null && users.size() > 0)
+		{
+			return users.get(0);
+		}
+		else {
+			return null;
+		}
+	}
+
 }

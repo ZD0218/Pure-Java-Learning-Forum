@@ -22,4 +22,11 @@ public interface UserService {
 	 * @return
 	 */
 	boolean register(User user);
+	
+	/**
+	 * 获取用户信息
+	 * @param user
+	 * @return
+	 */
+	User getUserByUsernameAndPassword(User user);
 }
