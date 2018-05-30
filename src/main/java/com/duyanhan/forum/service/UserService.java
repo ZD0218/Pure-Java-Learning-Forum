@@ -1,5 +1,6 @@
 package com.duyanhan.forum.service;
 
+import com.duyanhan.forum.dto.PasswordVO;
 import com.duyanhan.forum.entity.User;
 
 /**
@@ -24,7 +25,7 @@ public interface UserService {
 	boolean register(User user);
 	
 	/**
-	 * 获取用户信息
+	 * 根据用户名和密码获取用户信息
 	 * @param user
 	 * @return
 	 */
@@ -36,4 +37,21 @@ public interface UserService {
 	 * @return
 	 */
 	boolean updateUser(User user);
+
+	/**
+	 * 根据密码值对象更新用户密码
+	 * @param currentUser 
+	 * @param passwordVO
+	 * @return
+	 */
+	boolean updatePasswordByPasswordVO(User currentUser, PasswordVO passwordVO);
+
+	/**
+	 * 根据id获取用户信息
+	 * @param currentUser
+	 * @return
+	 */
+	User getUserById(User currentUser);
+	
+	
 }

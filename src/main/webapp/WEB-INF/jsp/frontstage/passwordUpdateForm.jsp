@@ -35,23 +35,26 @@
 			<div class="column is-9">
 				<div class="box">修改账号密码</div>
 				<div class="box">
-					<div class="field">
-						<label class="label">原密码</label>
-						<div class="control">
-							<input class="input" type="text">
+					<form action="${pageContext.request.contextPath}/user/passwordUpdate"
+						method="post">
+						<div class="field">
+							<label class="label">原密码</label>
+							<div class="control">
+								<input name="oldPassword" class="input" type="password">
+							</div>
 						</div>
-					</div>
-					<div class="field">
-						<label class="label">新密码</label>
-						<div class="control">
-							<input class="input" type="text">
+						<div class="field">
+							<label class="label">新密码</label>
+							<div class="control">
+								<input name="newPassword" class="input" type="password">
+							</div>
 						</div>
-					</div>
-					<div class="field is-grouped">
-						<div class="control">
-							<button class="button is-link">更新设置</button>
+						<div class="field is-grouped">
+							<div class="control">
+								<input class="button is-link" type="submit" value="更新设置">
+							</div>
 						</div>
-					</div>
+					</form>
 				</div>
 			</div>
 		</div>

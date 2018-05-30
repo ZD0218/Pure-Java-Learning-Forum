@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.duyanhan.forum.dto.PasswordVO;
 import com.duyanhan.forum.entity.User;
 import com.duyanhan.forum.service.UserService;
 
@@ -71,11 +72,50 @@ public class AccountController {
 	public String userConsole() {
 		return "userConsole";
 	}
+
+	// 设置个人信息
+	@RequestMapping(value = "/update")
+	public String update(User user, Model model) {
+		boolean updateUserResult = userService.updateUser(user);
+		if(updateUserResult) {
+			// 更新成功
+			// 此时Session中的用户信息也应当更新
+			User currentUser = userService.getUserByUsernameAndPassword(user);
+			model.addAttribute("currentUser", currentUser);
+			logger.info("用户信息更新成功，新的用户信息存入session");
+			return "userConsole";
+		}
+		else {
+			// 更新失败
+			logger.info("用户信息更新失败");
+			return "userConsole";
+		}
+	}
 	
 	// 修改密码页面
 	@RequestMapping(value = "/passwordUpdateForm")
 	public String passwordUpdateForm() {
 		return "passwordUpdateForm";
+	}
+	
+	
+	// 更新密码
+	@RequestMapping(value = "/passwordUpdate")
+	public String passwordUpdate(@ModelAttribute("currentUser") User currentUser, PasswordVO passwordVO, Model model) {
+		boolean updatePasswordResult = userService.updatePasswordByPasswordVO(currentUser, passwordVO);
+		if(updatePasswordResult) {
+			// 更新成功
+			// 此时Session中的用户信息也应当更新
+			currentUser = userService.getUserById(currentUser);
+			model.addAttribute("currentUser", currentUser);
+			logger.info("用户密码更新成功，新的用户信息存入session");
+			return "passwordUpdateForm";
+		}
+		else {
+			// 更新失败
+			logger.info("用户密码更新失败");
+			return "passwordUpdateForm";
+		}
 	}
 	
 	// 已发帖子管理页面
@@ -96,24 +136,6 @@ public class AccountController {
 		return "othersCommentManager";
 	}
 	
-	// 更新用户信息
-	@RequestMapping(value = "/update")
-	public String update(User user, Model model) {
-		boolean updateUserResult = userService.updateUser(user);
-		if(updateUserResult) {
-			// 更新成功
-			// 此时Session中的用户信息也应当更新
-			User currentUser = userService.getUserByUsernameAndPassword(user);
-			model.addAttribute("currentUser", currentUser);
-			logger.info("用户信息更新成功，新的用户信息存入session");
-			return "userConsole";
-		}
-		else {
-			// 更新失败
-			logger.info("用户信息更新失败");
-			return "userConsole";
-		}
-	}
 	
 	
 	

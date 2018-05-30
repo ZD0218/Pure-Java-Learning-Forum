@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.duyanhan.forum.controller.frontstage.AccountController;
 import com.duyanhan.forum.dao.UserMapper;
+import com.duyanhan.forum.dto.PasswordVO;
 import com.duyanhan.forum.entity.User;
 import com.duyanhan.forum.entity.UserExample;
 import com.duyanhan.forum.service.UserService;
@@ -71,5 +72,29 @@ public class UserServiceImpl implements UserService {
 			return false;
 		}
 	}
+
+	@Override
+	public boolean updatePasswordByPasswordVO(User currentUser, PasswordVO passwordVO) {
+		UserExample userExample = new UserExample();
+		userExample.createCriteria().andIdEqualTo(currentUser.getId()).andPasswordEqualTo(passwordVO.getOldPassword());
+		User newUser = new User();
+		newUser.setPassword(passwordVO.getNewPassword());
+		// 按条件更新非空字段
+		int line = userMapper.updateByExampleSelective(newUser, userExample);
+		if(line > 0)
+		{
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public User getUserById(User currentUser) {
+		User user = userMapper.selectByPrimaryKey(currentUser.getId());
+		return user;
+	}
+
 
 }
