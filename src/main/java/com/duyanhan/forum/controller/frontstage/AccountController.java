@@ -66,10 +66,34 @@ public class AccountController {
 		return "home";
 	}
 	
-	// 用户控制台
+	// 用户控制台/设置个人信息页
 	@RequestMapping(value = "/userConsole")
 	public String userConsole() {
 		return "userConsole";
+	}
+	
+	// 修改密码页面
+	@RequestMapping(value = "/passwordUpdateForm")
+	public String passwordUpdateForm() {
+		return "passwordUpdateForm";
+	}
+	
+	// 已发帖子管理页面
+	@RequestMapping(value = "/myPostManager")
+	public String myPostManager() {
+		return "myPostManager";
+	}
+	
+	// 已发回复管理页面
+	@RequestMapping(value = "/myCommentManager")
+	public String myCommentManager() {
+		return "myCommentManager";
+	}
+	
+	// 已收回复管理页面
+	@RequestMapping(value = "/othersCommentManager")
+	public String othersCommentManager() {
+		return "othersCommentManager";
 	}
 	
 }
