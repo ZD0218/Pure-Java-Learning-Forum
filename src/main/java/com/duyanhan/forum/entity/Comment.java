@@ -5,15 +5,15 @@ import java.util.Date;
 public class Comment {
     private Integer id;
 
-    private String content;
+    private Date postTime;
 
-    private Date posttime;
-
-    private Date updatetime;
+    private Date updateTime;
 
     private Integer postId;
 
     private Integer userId;
+
+    private String content;
 
     public Integer getId() {
         return id;
@@ -23,28 +23,20 @@ public class Comment {
         this.id = id;
     }
 
-    public String getContent() {
-        return content;
+    public Date getPostTime() {
+        return postTime;
     }
 
-    public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+    public void setPostTime(Date postTime) {
+        this.postTime = postTime;
     }
 
-    public Date getPosttime() {
-        return posttime;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setPosttime(Date posttime) {
-        this.posttime = posttime;
-    }
-
-    public Date getUpdatetime() {
-        return updatetime;
-    }
-
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
     public Integer getPostId() {
@@ -61,5 +53,13 @@ public class Comment {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content == null ? null : content.trim();
     }
 }

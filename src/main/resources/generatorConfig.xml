@@ -51,10 +51,18 @@
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>
 		<!-- 指定数据库表 -->
-		<table schema="" tableName="user"></table>
-		<table schema="" tableName="post"></table>
+		<table schema="" tableName="user">
+            <columnOverride column="personaldescription" property="personalDescription"></columnOverride>
+        </table>
+		<table schema="" tableName="post">
+            <columnOverride column="posttime" property="postTime"></columnOverride>
+            <columnOverride column="updatetime" property="updateTime"></columnOverride>
+        </table>
 		<table schema="" tableName="block"></table>
-		<table schema="" tableName="comment"></table>
+		<table schema="" tableName="comment">
+            <columnOverride column="posttime" property="postTime"></columnOverride>
+            <columnOverride column="updatetime" property="updateTime"></columnOverride>
+        </table>
 		<table schema="" tableName="blacklist"></table>
 		
         

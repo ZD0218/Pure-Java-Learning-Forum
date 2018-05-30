@@ -45,9 +45,9 @@
 				<!-- 发帖人-->
 				<form:input path="userId" type="hidden"/>
 				<!-- 发帖时间 -->
-				<form:input path="posttime" type="date" style="display:none;"/>
+				<form:input path="postTime" type="date" style="display:none;"/>
 				<!-- 更新时间 -->
-				<form:input path="updatetime" type="date" style="display:none;"/>
+				<form:input path="updateTime" type="date" style="display:none;"/>
 				<!-- 提交按钮 -->
 				<input class="button is-black" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;开始发帖&nbsp;&nbsp;&nbsp;&nbsp;">
 			</form:form>
@@ -81,7 +81,7 @@
         return obj.toString().replace(/^[0-9]{1}$/, "0" + obj);
     }
 	
-	/* 表单提交事件 */
+	// 表单提交事件
 	$("form").submit(function(e) {
 		// 提交之前，执行以下动作
 		
@@ -94,8 +94,8 @@
 		var now = getCurrentTime();
 		
 		// 发帖时,发帖时间和更新时间都一致
-		$("#posttime").val(now);
-		$("#updatetime").val(now);
+		$("#postTime").val(now);
+		$("#updateTime").val(now);
 		
 	});
 </script>

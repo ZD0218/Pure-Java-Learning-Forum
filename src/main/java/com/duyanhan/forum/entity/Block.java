@@ -5,9 +5,9 @@ public class Block {
 
     private String title;
 
-    private String content;
-
     private Integer level;
+
+    private String content;
 
     public Integer getId() {
         return id;
@@ -25,19 +25,19 @@ public class Block {
         this.title = title == null ? null : title.trim();
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
-    }
-
     public Integer getLevel() {
         return level;
     }
 
     public void setLevel(Integer level) {
         this.level = level;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content == null ? null : content.trim();
     }
 }

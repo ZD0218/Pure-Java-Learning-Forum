@@ -4,11 +4,13 @@
   <resultMap id="BaseResultMap" type="com.duyanhan.forum.entity.Post">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="title" jdbcType="VARCHAR" property="title" />
-    <result column="content" jdbcType="VARCHAR" property="content" />
-    <result column="postTime" jdbcType="DATE" property="posttime" />
-    <result column="updateTime" jdbcType="DATE" property="updatetime" />
+    <result column="postTime" jdbcType="DATE" property="postTime" />
+    <result column="updateTime" jdbcType="DATE" property="updateTime" />
     <result column="block_id" jdbcType="INTEGER" property="blockId" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.duyanhan.forum.entity.Post">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,8 +71,35 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, title, content, postTime, updateTime, block_id, user_id
+    id, title, postTime, updateTime, block_id, user_id
   </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.duyanhan.forum.entity.PostExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from post
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="rows != null">
+      <if test="offset != null">
+        limit ${offset}, ${rows}
+      </if>
+      <if test="offset == null">
+        limit ${rows}
+      </if>
+    </if>
+  </select>
   <select id="selectByExample" parameterType="com.duyanhan.forum.entity.PostExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -84,10 +113,20 @@
     <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
+    <if test="rows != null">
+      <if test="offset != null">
+        limit ${offset}, ${rows}
+      </if>
+      <if test="offset == null">
+        limit ${rows}
+      </if>
+    </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from post
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -102,12 +141,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.duyanhan.forum.entity.Post">
-    insert into post (id, title, content, 
-      postTime, updateTime, block_id, 
-      user_id)
-    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
-      #{posttime,jdbcType=DATE}, #{updatetime,jdbcType=DATE}, #{blockId,jdbcType=INTEGER}, 
-      #{userId,jdbcType=INTEGER})
+    insert into post (id, title, postTime, 
+      updateTime, block_id, user_id, 
+      content)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{postTime,jdbcType=DATE}, 
+      #{updateTime,jdbcType=DATE}, #{blockId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.duyanhan.forum.entity.Post">
     insert into post
@@ -118,13 +157,10 @@
       <if test="title != null">
         title,
       </if>
-      <if test="content != null">
-        content,
-      </if>
-      <if test="posttime != null">
+      <if test="postTime != null">
         postTime,
       </if>
-      <if test="updatetime != null">
+      <if test="updateTime != null">
         updateTime,
       </if>
       <if test="blockId != null">
@@ -132,6 +168,9 @@
       </if>
       <if test="userId != null">
         user_id,
+      </if>
+      <if test="content != null">
+        content,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -141,20 +180,20 @@
       <if test="title != null">
         #{title,jdbcType=VARCHAR},
       </if>
-      <if test="content != null">
-        #{content,jdbcType=VARCHAR},
+      <if test="postTime != null">
+        #{postTime,jdbcType=DATE},
       </if>
-      <if test="posttime != null">
-        #{posttime,jdbcType=DATE},
-      </if>
-      <if test="updatetime != null">
-        #{updatetime,jdbcType=DATE},
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=DATE},
       </if>
       <if test="blockId != null">
         #{blockId,jdbcType=INTEGER},
       </if>
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -173,14 +212,11 @@
       <if test="record.title != null">
         title = #{record.title,jdbcType=VARCHAR},
       </if>
-      <if test="record.content != null">
-        content = #{record.content,jdbcType=VARCHAR},
+      <if test="record.postTime != null">
+        postTime = #{record.postTime,jdbcType=DATE},
       </if>
-      <if test="record.posttime != null">
-        postTime = #{record.posttime,jdbcType=DATE},
-      </if>
-      <if test="record.updatetime != null">
-        updateTime = #{record.updatetime,jdbcType=DATE},
+      <if test="record.updateTime != null">
+        updateTime = #{record.updateTime,jdbcType=DATE},
       </if>
       <if test="record.blockId != null">
         block_id = #{record.blockId,jdbcType=INTEGER},
@@ -188,7 +224,23 @@
       <if test="record.userId != null">
         user_id = #{record.userId,jdbcType=INTEGER},
       </if>
+      <if test="record.content != null">
+        content = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update post
+    set id = #{record.id,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=VARCHAR},
+      postTime = #{record.postTime,jdbcType=DATE},
+      updateTime = #{record.updateTime,jdbcType=DATE},
+      block_id = #{record.blockId,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      content = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -197,9 +249,8 @@
     update post
     set id = #{record.id,jdbcType=INTEGER},
       title = #{record.title,jdbcType=VARCHAR},
-      content = #{record.content,jdbcType=VARCHAR},
-      postTime = #{record.posttime,jdbcType=DATE},
-      updateTime = #{record.updatetime,jdbcType=DATE},
+      postTime = #{record.postTime,jdbcType=DATE},
+      updateTime = #{record.updateTime,jdbcType=DATE},
       block_id = #{record.blockId,jdbcType=INTEGER},
       user_id = #{record.userId,jdbcType=INTEGER}
     <if test="_parameter != null">
@@ -212,14 +263,11 @@
       <if test="title != null">
         title = #{title,jdbcType=VARCHAR},
       </if>
-      <if test="content != null">
-        content = #{content,jdbcType=VARCHAR},
+      <if test="postTime != null">
+        postTime = #{postTime,jdbcType=DATE},
       </if>
-      <if test="posttime != null">
-        postTime = #{posttime,jdbcType=DATE},
-      </if>
-      <if test="updatetime != null">
-        updateTime = #{updatetime,jdbcType=DATE},
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=DATE},
       </if>
       <if test="blockId != null">
         block_id = #{blockId,jdbcType=INTEGER},
@@ -227,15 +275,27 @@
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
       </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.duyanhan.forum.entity.Post">
+    update post
+    set title = #{title,jdbcType=VARCHAR},
+      postTime = #{postTime,jdbcType=DATE},
+      updateTime = #{updateTime,jdbcType=DATE},
+      block_id = #{blockId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.duyanhan.forum.entity.Post">
     update post
     set title = #{title,jdbcType=VARCHAR},
-      content = #{content,jdbcType=VARCHAR},
-      postTime = #{posttime,jdbcType=DATE},
-      updateTime = #{updatetime,jdbcType=DATE},
+      postTime = #{postTime,jdbcType=DATE},
+      updateTime = #{updateTime,jdbcType=DATE},
       block_id = #{blockId,jdbcType=INTEGER},
       user_id = #{userId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}

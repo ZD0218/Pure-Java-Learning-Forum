@@ -9,7 +9,7 @@ public class User {
 
     private String sex;
 
-    private String personaldescription;
+    private String personalDescription;
 
     public Integer getId() {
         return id;
@@ -43,19 +43,11 @@ public class User {
         this.sex = sex == null ? null : sex.trim();
     }
 
-    public String getPersonaldescription() {
-        return personaldescription;
+    public String getPersonalDescription() {
+        return personalDescription;
     }
 
-    public void setPersonaldescription(String personaldescription) {
-        this.personaldescription = personaldescription == null ? null : personaldescription.trim();
+    public void setPersonalDescription(String personalDescription) {
+        this.personalDescription = personalDescription == null ? null : personalDescription.trim();
     }
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", sex=" + sex
-				+ ", personaldescription=" + personaldescription + "]";
-	}
-    
-    
 }

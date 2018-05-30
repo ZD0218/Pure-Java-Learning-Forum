@@ -16,15 +16,21 @@ public interface BlockMapper {
 
     int insertSelective(Block record);
 
+    List<Block> selectByExampleWithBLOBs(BlockExample example);
+
     List<Block> selectByExample(BlockExample example);
 
     Block selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") Block record, @Param("example") BlockExample example);
 
+    int updateByExampleWithBLOBs(@Param("record") Block record, @Param("example") BlockExample example);
+
     int updateByExample(@Param("record") Block record, @Param("example") BlockExample example);
 
     int updateByPrimaryKeySelective(Block record);
+
+    int updateByPrimaryKeyWithBLOBs(Block record);
 
     int updateByPrimaryKey(Block record);
 }
