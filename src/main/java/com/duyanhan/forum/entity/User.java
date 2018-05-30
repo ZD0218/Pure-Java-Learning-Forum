@@ -7,6 +7,10 @@ public class User {
 
     private String password;
 
+    private String nickname;
+
+    private String avatar;
+
     private String sex;
 
     private String personalDescription;
@@ -33,6 +37,22 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname == null ? null : nickname.trim();
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar == null ? null : avatar.trim();
     }
 
     public String getSex() {

@@ -40,11 +40,4 @@ public class Block {
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
     }
-
-	@Override
-	public String toString() {
-		return "Block [id=" + id + ", title=" + title + ", level=" + level + ", content=" + content + "]";
-	}
-    
-    
 }
