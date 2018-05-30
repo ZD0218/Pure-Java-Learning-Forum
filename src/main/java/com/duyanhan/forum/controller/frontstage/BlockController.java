@@ -40,7 +40,6 @@ public class BlockController {
 	public void getBlockPageList(@RequestBody QueryPage queryPage, HttpServletResponse response) throws Exception {
 		
 		List<Block> blockList = blockService.getBlockListByLevelAndQueryPage(queryPage);
-		System.out.println(blockList);
 		Gson gson = new Gson();
 		String blockPageListJson = gson.toJson(blockList);
 		logger.info("获取版块分页列表Json：" + blockPageListJson);

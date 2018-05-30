@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -51,6 +52,14 @@ public class PostController {
 			logger.error("发帖失败");
 			return "postForm";
 		}
+	}
+	
+	// 展示帖子列表
+	@RequestMapping(value = "/postList/{blockId}")
+	public String postList(@PathVariable Integer blockId, Model model) {
+		// 将blockId 保存到request域中
+		model.addAttribute("currentBlockId", blockId);
+		return "postList";
 	}
 
 	// 展示帖子

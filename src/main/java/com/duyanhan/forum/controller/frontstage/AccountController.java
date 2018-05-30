@@ -65,4 +65,11 @@ public class AccountController {
 		logger.info("用户{"+currentUser.getUsername()+"}注销成功");
 		return "home";
 	}
+	
+	// 用户控制台
+	@RequestMapping(value = "/userConsole")
+	public String userConsole() {
+		return "userConsole";
+	}
+	
 }

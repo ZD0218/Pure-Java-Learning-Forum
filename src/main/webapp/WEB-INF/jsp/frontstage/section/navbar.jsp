@@ -95,18 +95,11 @@
 				<!-- 当用户登录之后 -->
 				<c:if test="${!empty sessionScope.currentUser }">
 					<div class="navbar-item has-dropdown is-hoverable">
-						<a class="navbar-link" href="/documentation/overview/start/">${sessionScope.currentUser.username }</a>
+						<a class="navbar-link" href="${pageContext.request.contextPath}/userConsole">${sessionScope.currentUser.username }</a>
 						<div class="navbar-dropdown is-boxed">
-							<a class="navbar-item"
-								href="https://bulma.io/documentation/modifiers/syntax/">设置个人信息
-							</a> <a class="navbar-item"
-								href="https://bulma.io/documentation/columns/basics/">修改密码</a>
+							<a class="navbar-item" href="${pageContext.request.contextPath}/user/userConsole">我的控制台</a>
 							<hr class="navbar-divider">
-							<a class="navbar-item" href="/documentation/overview/start/">帖子与回复管理</a>
-							<hr class="navbar-divider">
-							<a class="navbar-item"
-								href="${pageContext.request.contextPath }/user/logout">注销账号
-							</a>
+							<a class="navbar-item" href="${pageContext.request.contextPath}/user/userConsole">注销账号</a>
 						</div>
 					</div>
 				</c:if>
