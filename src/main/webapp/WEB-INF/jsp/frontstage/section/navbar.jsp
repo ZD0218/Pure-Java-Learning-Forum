@@ -18,7 +18,7 @@
 				success:function(data) {
 					var blockTitleListStr = "<a class=\"navbar-item\" href=\"#\">即时问答版块 </a><hr class=\"navbar-divider\">";
 					$.each(data, function(index, block){
-						blockTitleListStr = blockTitleListStr + "<a id=" + block.id + " class=\"navbar-item\" href=\"#\">" + block.title + "</a>";
+						blockTitleListStr = blockTitleListStr + "<a id=" + block.id + " class=\"navbar-item\" href=\"${pageContext.request.contextPath}/postList/" + block.id + "\">" + block.title + "</a>";
 					});
 					$("#navBlockTitleList").html(blockTitleListStr);
 				},
@@ -51,7 +51,7 @@
 				<a class="navbar-item"
 					href="${pageContext.request.contextPath}/home"> 主页 </a>
 				<div class="navbar-item has-dropdown is-hoverable">
-					<a class="navbar-link" href="#">
+					<a class="navbar-link">
 						版块导航 </a>
 					<div id="navBlockTitleList" class="navbar-dropdown is-boxed">
 						<!-- 这里是导航条的版块列表 -->
