@@ -22,7 +22,7 @@
     	class="org.springframework.context.support.ConversionServiceFactoryBean">
     	<property name="converters">
     		<list>
-    			<bean class="com.duyanhan.forum.util.common.converter.StringToDateConverter">
+    			<bean class="com.duyanhan.forum.util.converter.StringToDateConverter">
                     <property name="datePattern" value="yyyy-MM-dd"></property>
                 </bean>
     		</list>

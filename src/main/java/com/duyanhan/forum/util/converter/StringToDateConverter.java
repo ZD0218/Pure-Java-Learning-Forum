@@ -1,4 +1,4 @@
-package com.duyanhan.forum.util.common.converter;
+package com.duyanhan.forum.util.converter;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
