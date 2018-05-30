@@ -33,6 +33,7 @@
 				<jsp:include page="section/asideMenu.jsp" />
 			</div>
 			<div class="column is-9">
+				<div class="box">设置个人信息</div>
 				<div class="box">
 					<div class="file is-boxed">
 						<label class="file-label"> <input class="file-input"

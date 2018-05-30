@@ -95,11 +95,11 @@
 				<!-- 当用户登录之后 -->
 				<c:if test="${!empty sessionScope.currentUser }">
 					<div class="navbar-item has-dropdown is-hoverable">
-						<a class="navbar-link" href="${pageContext.request.contextPath}/userConsole">${sessionScope.currentUser.username }</a>
+						<a class="navbar-link">${sessionScope.currentUser.username }</a>
 						<div class="navbar-dropdown is-boxed">
 							<a class="navbar-item" href="${pageContext.request.contextPath}/user/userConsole">我的控制台</a>
 							<hr class="navbar-divider">
-							<a class="navbar-item" href="${pageContext.request.contextPath}/user/userConsole">注销账号</a>
+							<a class="navbar-item" href="${pageContext.request.contextPath}/user/logout">注销账号</a>
 						</div>
 					</div>
 				</c:if>

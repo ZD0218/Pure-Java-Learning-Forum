@@ -33,58 +33,24 @@
 				<jsp:include page="section/asideMenu.jsp" />
 			</div>
 			<div class="column is-9">
+				<div class="box">修改账号密码</div>
 				<div class="box">
-					<div class="file is-boxed">
-						<label class="file-label"> <input class="file-input"
-							type="file" name="resume"> <span class="file-cta">
-								<span class="file-icon"> <i class="fas fa-upload"></i>
-							</span> <span class="file-label">选择新的头像</span>
-						</span>
-						</label>
-					</div>
 					<div class="field">
-						<label class="label">昵称</label>
-						<div class="control has-icons-left has-icons-right">
-							<input class="input is-success" type="text" placeholder="用户昵称">
-							<span class="icon is-small is-left"> <i
-								class="fas fa-user"></i>
-							</span> <span class="icon is-small is-right"> <i
-								class="fas fa-check"></i>
-							</span>
-						</div>
-						<p class="help is-success">昵称可用</p>
-					</div>
-
-					<div class="field">
-						<label class="label">邮箱</label>
-						<div class="control has-icons-left has-icons-right">
-							<input class="input is-danger" type="email" placeholder="用户邮箱">
-							<span class="icon is-small is-left"> <i
-								class="fas fa-envelope"></i>
-							</span> <span class="icon is-small is-right"> <i
-								class="fas fa-exclamation-triangle"></i>
-							</span>
-						</div>
-						<p class="help is-danger">邮箱不可用</p>
-					</div>
-
-					<div class="field">
-						<label class="label">性别</label>
+						<label class="label">原密码</label>
 						<div class="control">
-							<div class="select">
-								<select>
-									<option>选择性别</option>
-									<option>男</option>
-									<option>女</option>
-									<option>其他</option>
-								</select>
-							</div>
+							<input class="input" type="text" placeholder="用户昵称">
 						</div>
 					</div>
 					<div class="field">
-						<label class="label">个人描述</label>
+						<label class="label">新密码</label>
 						<div class="control">
-							<textarea class="textarea" placeholder="可以使用个性标签，每个个性标签以#开始，以#结束"></textarea>
+							<input class="input" type="text" placeholder="用户昵称">
+						</div>
+					</div>
+					<div class="field">
+						<label class="label">重复密码</label>
+						<div class="control">
+							<input class="input" type="text" placeholder="用户昵称">
 						</div>
 					</div>
 
