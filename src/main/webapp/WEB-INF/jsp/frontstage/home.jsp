@@ -23,6 +23,37 @@
 <script defer src="${pageContext.request.contextPath}/plugins/material-floating-button/mfb.js"></script>
 <!-- 我另行导入的字体样式 -->
 <link href="${pageContext.request.contextPath}/plugins/Ionicons/css/ionicons.min.css" rel="stylesheet">
+<script>
+<!-- 当页面加载完成之后，加载分页版块列表 -->
+$(document).ready(function() {
+	getBlockPageList();
+});
+
+function getBlockPageList() {
+	$.ajax({
+			url:"${pageContext.request.contextPath}/json/blockPageList",
+			dataType:"json",
+			type:"post",
+			contentType:"application/json",
+			data:JSON.stringify({page:0, pageSize:3}),
+			async:true,
+			success:function(data) {
+				var blockAll = "";
+				$.each(data, function(index, block){
+					var blockId = block.id;
+					var blockTitle = block.title;
+					var blockContent = block.content;
+					var blockSection = "<div class=\"box\"><a class=\"has-text-info\" href=\"${pageContext.request.contextPath }/postShow/" + blockId + "\"><b id=\"blockTitle\">" + blockTitle + "</b><div id=\"blockContent\">" + blockContent + "</div></a></div>";
+					blockAll = blockAll + blockSection;
+				});
+				$("#blockAll").html(blockAll);
+			},
+			error:function(){
+				alert("版块分页列表请求失败");
+			}
+		});
+}
+</script>
 </head>
 <body>
 	<!-- 包含导航条 -->
@@ -38,42 +69,8 @@
 						</ul>
 					</div>
 				</div>
-				<div class="box">
-					<a class="has-text-success"
-						href="${pageContext.request.contextPath }/postList"> <b>Java语言基础版块</b>
-						<div>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque
-								risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum
-							rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et
-							dictum felis venenatis efficitur. Aenean ac <em>eleifend
-								lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin
-							porttitor, tortor urna tempor ligula, id porttitor mi magna a
-							neque. Donec dui urna, vehicula et sem eget, facilisis sodales
-							sem.
-						</div>
-					</a>
-				</div>
-				<div class="box">
-					<a class="has-text-info" href="http://duyanhan.com"> <b>Java面向对象版块</b>
-						<div>Lorem ipsum dolor mollis lectus. Donec sodales, arcu et
-							sollicitudin porttitor, tortor urna tempor ligula, id porttitor
-							mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis
-							sodales sem.</div>
-					</a>
-				</div>
-				<div class="box">
-					<a class="has-text-primary" href="http://duyanhan.com"> <b>Java集合版块</b>
-						<div>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque
-								risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum
-							rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et
-							dictum felis venenatis efficitur. Aenean ac <em>eleifend
-								lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin
-							porttitor, tortor urna tempor ligula, id porttitor mi magna a
-							neque. Donec dui urna, vehicula et sem eget, facilisis sodales
-							sem.
-						</div>
-					</a>
+				
+				<div id="blockAll">
 				</div>
 
 			</div>

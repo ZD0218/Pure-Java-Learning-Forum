@@ -8,8 +8,10 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.duyanhan.forum.dto.QueryPage;
 import com.duyanhan.forum.entity.Block;
 import com.duyanhan.forum.service.BlockService;
 import com.google.gson.Gson;
@@ -31,5 +33,18 @@ public class BlockController {
 		logger.info("获取版块标题列表Json：" + blockListJson);
 		response.setContentType("text/html;charset=UTF-8");
 		response.getWriter().println(blockListJson);
+	}
+	
+	
+	@RequestMapping("/blockPageList")
+	public void getBlockPageList(@RequestBody QueryPage queryPage, HttpServletResponse response) throws Exception {
+		
+		List<Block> blockList = blockService.getBlockListByLevelAndQueryPage(queryPage);
+		System.out.println(blockList);
+		Gson gson = new Gson();
+		String blockPageListJson = gson.toJson(blockList);
+		logger.info("获取版块分页列表Json：" + blockPageListJson);
+		response.setContentType("text/html;charset=UTF-8");
+		response.getWriter().println(blockPageListJson);
 	}
 }
