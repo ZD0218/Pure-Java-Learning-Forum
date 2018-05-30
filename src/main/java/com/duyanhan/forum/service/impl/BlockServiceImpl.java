@@ -23,7 +23,7 @@ public class BlockServiceImpl implements BlockService {
 		BlockExample blockExample = new BlockExample();
 		// 优先按照等级排序，再按名称排序
 		blockExample.setOrderByClause("level ASC, `title` ASC");
-		List<Block> blockList = blockMapper.selectByExample(blockExample);
+		List<Block> blockList = blockMapper.selectByExampleWithBLOBs(blockExample);
 		return blockList;
 	}
 
@@ -31,7 +31,7 @@ public class BlockServiceImpl implements BlockService {
 	public List<Block> getBlockListByLevelAndQueryPage(QueryPage queryPage) {
 		BlockExample blockExample = new BlockExample();
 		blockExample.page(queryPage.getPage(), queryPage.getPageSize()).setOrderByClause("level ASC, `title` ASC");
-		List<Block> blockList = blockMapper.selectByExample(blockExample);
+		List<Block> blockList = blockMapper.selectByExampleWithBLOBs(blockExample);
 		return blockList;
 	}
 
