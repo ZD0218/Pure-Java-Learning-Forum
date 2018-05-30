@@ -29,4 +29,11 @@ public interface UserService {
 	 * @return
 	 */
 	User getUserByUsernameAndPassword(User user);
+	
+	/**
+	 * 更新用户信息
+	 * @param user
+	 * @return
+	 */
+	boolean updateUser(User user);
 }

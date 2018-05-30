@@ -52,7 +52,7 @@ public class AccountController {
 			return "loginForm";
 		}
 		else {
-			// 注册成功
+			// 注册失败
 			logger.info("用户{"+user.getUsername()+"}注册失败");
 			return "registerForm";
 		}
@@ -68,7 +68,9 @@ public class AccountController {
 	
 	// 用户控制台/设置个人信息页
 	@RequestMapping(value = "/userConsole")
-	public String userConsole() {
+	public String userConsole(@ModelAttribute("currentUser") User currentUser, Model model) {
+		model.addAttribute("currentUser", currentUser);
+		System.out.println(currentUser);
 		return "userConsole";
 	}
 	
@@ -95,5 +97,26 @@ public class AccountController {
 	public String othersCommentManager() {
 		return "othersCommentManager";
 	}
+	
+	// 更新用户信息
+	@RequestMapping(value = "/update")
+	public String update(User user, Model model) {
+		boolean updateUserResult = userService.updateUser(user);
+		if(updateUserResult) {
+			// 更新成功
+			// 此时Session中的用户信息也应当更新
+			User currentUser = userService.getUserByUsernameAndPassword(user);
+			model.addAttribute("currentUser", currentUser);
+			logger.info("用户信息更新成功，新的用户信息存入session");
+			return "userConsole";
+		}
+		else {
+			// 更新失败
+			logger.info("用户信息更新失败");
+			return "userConsole";
+		}
+	}
+	
+	
 	
 }

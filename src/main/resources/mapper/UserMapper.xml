@@ -5,8 +5,9 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
     <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="sex" jdbcType="VARCHAR" property="sex" />
     <result column="personalDescription" jdbcType="VARCHAR" property="personalDescription" />
   </resultMap>
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, username, password, nickname, avatar, sex, personalDescription
+    id, username, password, avatar, nickname, email, sex, personalDescription
   </sql>
   <select id="selectByExample" parameterType="com.duyanhan.forum.entity.UserExample" resultMap="BaseResultMap">
     select
@@ -111,11 +112,11 @@
   </delete>
   <insert id="insert" parameterType="com.duyanhan.forum.entity.User">
     insert into user (id, username, password, 
-      nickname, avatar, sex, 
-      personalDescription)
+      avatar, nickname, email, 
+      sex, personalDescription)
     values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{nickname,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
-      #{personalDescription,jdbcType=VARCHAR})
+      #{avatar,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{personalDescription,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.duyanhan.forum.entity.User">
     insert into user
@@ -129,11 +130,14 @@
       <if test="password != null">
         password,
       </if>
+      <if test="avatar != null">
+        avatar,
+      </if>
       <if test="nickname != null">
         nickname,
       </if>
-      <if test="avatar != null">
-        avatar,
+      <if test="email != null">
+        email,
       </if>
       <if test="sex != null">
         sex,
@@ -152,11 +156,14 @@
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
       </if>
+      <if test="avatar != null">
+        #{avatar,jdbcType=VARCHAR},
+      </if>
       <if test="nickname != null">
         #{nickname,jdbcType=VARCHAR},
       </if>
-      <if test="avatar != null">
-        #{avatar,jdbcType=VARCHAR},
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
       </if>
       <if test="sex != null">
         #{sex,jdbcType=VARCHAR},
@@ -184,11 +191,14 @@
       <if test="record.password != null">
         password = #{record.password,jdbcType=VARCHAR},
       </if>
+      <if test="record.avatar != null">
+        avatar = #{record.avatar,jdbcType=VARCHAR},
+      </if>
       <if test="record.nickname != null">
         nickname = #{record.nickname,jdbcType=VARCHAR},
       </if>
-      <if test="record.avatar != null">
-        avatar = #{record.avatar,jdbcType=VARCHAR},
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
       </if>
       <if test="record.sex != null">
         sex = #{record.sex,jdbcType=VARCHAR},
@@ -206,8 +216,9 @@
     set id = #{record.id,jdbcType=INTEGER},
       username = #{record.username,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
-      nickname = #{record.nickname,jdbcType=VARCHAR},
       avatar = #{record.avatar,jdbcType=VARCHAR},
+      nickname = #{record.nickname,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
       sex = #{record.sex,jdbcType=VARCHAR},
       personalDescription = #{record.personalDescription,jdbcType=VARCHAR}
     <if test="_parameter != null">
@@ -223,11 +234,14 @@
       <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
       </if>
+      <if test="avatar != null">
+        avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
       <if test="nickname != null">
         nickname = #{nickname,jdbcType=VARCHAR},
       </if>
-      <if test="avatar != null">
-        avatar = #{avatar,jdbcType=VARCHAR},
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
       </if>
       <if test="sex != null">
         sex = #{sex,jdbcType=VARCHAR},
@@ -242,8 +256,9 @@
     update user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
-      nickname = #{nickname,jdbcType=VARCHAR},
       avatar = #{avatar,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},
       personalDescription = #{personalDescription,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}

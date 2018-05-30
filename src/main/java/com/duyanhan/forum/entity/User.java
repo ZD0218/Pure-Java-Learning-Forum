@@ -7,9 +7,11 @@ public class User {
 
     private String password;
 
+    private String avatar;
+
     private String nickname;
 
-    private String avatar;
+    private String email;
 
     private String sex;
 
@@ -39,6 +41,14 @@ public class User {
         this.password = password == null ? null : password.trim();
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar == null ? null : avatar.trim();
+    }
+
     public String getNickname() {
         return nickname;
     }
@@ -47,12 +57,12 @@ public class User {
         this.nickname = nickname == null ? null : nickname.trim();
     }
 
-    public String getAvatar() {
-        return avatar;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar == null ? null : avatar.trim();
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
     }
 
     public String getSex() {
@@ -70,4 +80,12 @@ public class User {
     public void setPersonalDescription(String personalDescription) {
         this.personalDescription = personalDescription == null ? null : personalDescription.trim();
     }
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", avatar=" + avatar
+				+ ", nickname=" + nickname + ", email=" + email + ", sex=" + sex + ", personalDescription="
+				+ personalDescription + "]";
+	}
+    
 }

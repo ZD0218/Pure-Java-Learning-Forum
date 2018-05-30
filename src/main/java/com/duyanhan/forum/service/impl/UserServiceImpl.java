@@ -59,4 +59,17 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	@Override
+	public boolean updateUser(User user) {
+		// 按主键更新
+		int line = userMapper.updateByPrimaryKey(user);
+		if(line > 0)
+		{
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
 }

@@ -39,13 +39,42 @@
 			success : function(data) {
 				alert("图片上传成功");
 				var imgSrc = data.data.url;
-				$("#currentAvatar").attr("src", data.data.url);
+				$("#currentAvatar").css("background-image","url("+imgSrc+")");
+				$("#avatar").val(imgSrc)
 			},
 			error : function() {
 				alert("图片上传失败");
 			}
 		});
 	}
+	
+	// 页面DOM结构加载完毕后
+	$(document).ready(function() {
+		
+		/* 第一件事儿：将头像控件和个人描述控件的内容放入对应的div中 */
+		var imgSrc = $("#avatar").val();
+		alert(imgSrc);
+		if(imgSrc.length > 0) {
+			$("#currentAvatar").css("background-image","url("+imgSrc+")");
+		}
+		var personalDescription = $("#personalDescription").val();
+		if(personalDescription.length > 0) {
+			$("#personalDescriptionTextarea").val(personalDescription);
+		}
+		
+		
+		
+		
+		
+		
+		
+		// 表单提交事件(这个其实是给form表单绑定一个提交事件，那么应该在包含form表单的DOM结构加载出来之后才能绑定事件，所以该事件应该在DOM已经ready之后绑定)
+		$("form").submit(function(e) {
+			// 将多行文本框中的内容填入input控件中
+			$("#personalDescription").val($("#personalDescriptionTextarea").val()); 
+		});
+	});
+	
 </script>
 </head>
 <body>
@@ -61,17 +90,17 @@
 			<div class="column is-9">
 				<div class="box">设置个人信息</div>
 				<div class="box">
-					<form:form action="" method="post">
+					<form:form modelAttribute="currentUser" action="${pageContext.request.contextPath}/user/update" method="post">
 						<div id="avatarFileController" class="file is-boxed">
+							<!-- 用户id控件 -->
+							<form:input path="id" type="hidden"/>
+							<!-- 头像显示框 -->
+							<div id="currentAvatar" class="box" style="width:82px;height:82px;background-size:cover"></div>
 							<label class="file-label"> <input class="file-input"
 								type="file" name="file" onchange="uploadAvatarFile()"> <span
-								class="file-cta"> <span class="file-icon"> <i
-										class="fas fa-upload"></i></span> <span class="file-label">选择新的头像</span>
+								class="file-cta"> <span class="file-icon"> <i class="fas fa-upload"></i></span> <span class="file-label">选择新的头像</span>
 							</span>
 							</label>
-							<figure class="image is-96x96">
-								<img id="currentAvatar" src="">
-							</figure>
 						</div>
 						<!-- 头像控件 -->
 						<form:input path="avatar" type="hidden"/>
@@ -95,7 +124,7 @@
 								<form:input path="email" cssClass="input is-danger" type="email" placeholder="用户邮箱"/>
 								<span class="icon is-small is-left"> <i
 									class="fas fa-envelope"></i>
-								</span> <span class="icon is-small is-right"> <i
+								</span> <span class="icon is-small is-right"><i
 									class="fas fa-exclamation-triangle"></i>
 								</span>
 							</div>
@@ -105,26 +134,28 @@
 							<label class="label">性别</label>
 							<div class="control">
 								<div class="select">
-									<select>
-										<option>选择性别</option>
-										<option>男</option>
-										<option>女</option>
-										<option>其他</option>
-									</select>
+									<form:select path="sex">
+										<form:option value="">选择性别</form:option>
+										<form:option value="男">男</form:option>
+										<form:option value="女">女</form:option>
+										<form:option value="其他">其他</form:option>
+									</form:select>
 								</div>
 							</div>
 						</div>
 						<div class="field">
 							<label class="label">个人描述</label>
 							<div class="control">
-								<textarea class="textarea"
-									placeholder="可以使用个性标签，每个个性标签以#开始，以#结束"></textarea>
+								<div class="control">
+									<textarea id="personalDescriptionTextarea" class="textarea" placeholder="可以使用个性标签，每个个性标签以#开始，以#结束"></textarea>
+								</div>
+								<form:input path="personalDescription" style="display:none;" type="text"/>
 							</div>
 						</div>
-
 						<div class="field is-grouped">
 							<div class="control">
-								<button class="button is-link">更新设置</button>
+								<!-- 提交按钮 -->
+								<input class="button is-link" type="submit" value="更新设置">
 							</div>
 						</div>
 					</form:form>
