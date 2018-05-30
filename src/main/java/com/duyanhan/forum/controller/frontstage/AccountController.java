@@ -68,9 +68,7 @@ public class AccountController {
 	
 	// 用户控制台/设置个人信息页
 	@RequestMapping(value = "/userConsole")
-	public String userConsole(@ModelAttribute("currentUser") User currentUser, Model model) {
-		model.addAttribute("currentUser", currentUser);
-		System.out.println(currentUser);
+	public String userConsole() {
 		return "userConsole";
 	}
 	

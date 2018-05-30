@@ -53,7 +53,6 @@
 		
 		/* 第一件事儿：将头像控件和个人描述控件的内容放入对应的div中 */
 		var imgSrc = $("#avatar").val();
-		alert(imgSrc);
 		if(imgSrc.length > 0) {
 			$("#currentAvatar").css("background-image","url("+imgSrc+")");
 		}
@@ -61,12 +60,6 @@
 		if(personalDescription.length > 0) {
 			$("#personalDescriptionTextarea").val(personalDescription);
 		}
-		
-		
-		
-		
-		
-		
 		
 		// 表单提交事件(这个其实是给form表单绑定一个提交事件，那么应该在包含form表单的DOM结构加载出来之后才能绑定事件，所以该事件应该在DOM已经ready之后绑定)
 		$("form").submit(function(e) {

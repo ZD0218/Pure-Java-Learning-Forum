@@ -87,7 +87,9 @@
 		
 		// 先获取summernote的div中的内容到content中
 		var htmlContent = $("#summernote").summernote("code");
-		alert(htmlContent.length);
+		if(htmlContent.length > 65535) {
+			alert("字数超出限制");
+		}
 		$("#content").val(htmlContent);
 		
 		// 获取时间
