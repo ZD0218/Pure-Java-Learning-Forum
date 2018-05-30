@@ -38,22 +38,15 @@
 					<div class="field">
 						<label class="label">原密码</label>
 						<div class="control">
-							<input class="input" type="text" placeholder="用户昵称">
+							<input class="input" type="text">
 						</div>
 					</div>
 					<div class="field">
 						<label class="label">新密码</label>
 						<div class="control">
-							<input class="input" type="text" placeholder="用户昵称">
+							<input class="input" type="text">
 						</div>
 					</div>
-					<div class="field">
-						<label class="label">重复密码</label>
-						<div class="control">
-							<input class="input" type="text" placeholder="用户昵称">
-						</div>
-					</div>
-
 					<div class="field is-grouped">
 						<div class="control">
 							<button class="button is-link">更新设置</button>
