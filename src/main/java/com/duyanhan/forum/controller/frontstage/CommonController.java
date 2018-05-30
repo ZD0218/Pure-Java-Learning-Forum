@@ -17,6 +17,12 @@ import com.duyanhan.forum.entity.User;
 @Controller
 public class CommonController {
 	
+	// 测试页
+	@RequestMapping(value="/test")
+	public String test() {
+		return  "test";
+	}
+	
 	// 默认欢迎页
 	@RequestMapping(value="/")
 	public String index() {

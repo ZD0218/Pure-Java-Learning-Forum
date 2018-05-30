@@ -10,8 +10,9 @@ create table user(
 	id	int not null auto_increment,
 	username varchar(20) not null,
 	password varchar(20) not null,
-	nickname varchar(20),
 	avatar varchar(200),
+	nickname varchar(20),
+	email varchar(100),
 	sex varchar(10),
 	personalDescription varchar(400),
 	primary key(id)
