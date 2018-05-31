@@ -22,15 +22,17 @@
 <script defer src="${pageContext.request.contextPath}/plugins/material-floating-button/mfb.js"></script>
 <!-- 我另行导入的字体样式 -->
 <link href="${pageContext.request.contextPath}/plugins/Ionicons/css/ionicons.min.css" rel="stylesheet">
+<!-- summernote插件的css/js文件 -->
+<link href="${pageContext.request.contextPath }/plugins/summernote-0.8.10/summernote-lite.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath }/plugins/summernote-0.8.10/summernote-lite.js"></script>
 <script>
 <!-- 当页面加载完成之后，加载分页版块列表 -->
 $(document).ready(function() {
 	getCommentPageList();
 });
-
 function getCommentPageList() {
 	// 获取帖子ID
-	var postId = ${requestScope.post.id};
+	var postId = ${requestScope.currentPost.id};
 	// 根据帖子ID对评论进行分页查询，先展示首页的评论，每页展示10条
 	$.ajax({
 			url:"${pageContext.request.contextPath}/json/commentPageList",
@@ -51,7 +53,7 @@ function getCommentPageList() {
 				$("#commentAll").html(commentAll);
 			},
 			error:function(){
-				alert("版块分页列表请求失败");
+				alert("评论分页列表请求失败");
 			}
 		});
 }
@@ -228,7 +230,6 @@ function getCommentPageList() {
 				</div>
 			</div>
 		</section>
-
 	</div>
 	<!-- 悬浮按钮 -->
 	<ul id="menu" class="mfb-component--br   mfb-slidein-spring "
@@ -239,11 +240,12 @@ function getCommentPageList() {
 				class="mfb-component__main-icon--active ion-close-round"></i>
 		</a>
 			<ul class="mfb-component__list">
-				<li><a href="" data-mfb-label="快速回帖"
+				<!-- 回帖时传入当前帖子的ID -->
+				<li><a href="${pageContext.request.contextPath}/commentForm/${requestScope.currentPost.id}" data-mfb-label="快速回帖"
 					class="mfb-component__button--child"> <i
 						class="mfb-component__child-icon ion-chatboxes"></i>
 				</a></li>
-				<li><a href="" data-mfb-label="快速发帖"
+				<li><a href="${pageContext.request.contextPath}/postForm" data-mfb-label="快速发帖"
 					class="mfb-component__button--child"> <i
 						class="mfb-component__child-icon ion-edit"></i>
 				</a></li>
@@ -257,5 +259,6 @@ function getCommentPageList() {
 				</a></li>
 			</ul></li>
 	</ul>
+	
 </body>
 </html>

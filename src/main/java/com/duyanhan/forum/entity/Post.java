@@ -72,4 +72,11 @@ public class Post {
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
     }
+
+	@Override
+	public String toString() {
+		return "Post [id=" + id + ", title=" + title + ", postTime=" + postTime + ", updateTime=" + updateTime
+				+ ", blockId=" + blockId + ", userId=" + userId + ", content=" + content + "]";
+	}
+    
 }
