@@ -1,18 +1,25 @@
 package com.duyanhan.forum.controller.frontstage;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.duyanhan.forum.dto.PasswordVO;
+import com.duyanhan.forum.entity.Post;
 import com.duyanhan.forum.entity.User;
 import com.duyanhan.forum.service.UserService;
+import com.google.gson.Gson;
 
 @Controller
 @RequestMapping(value= "/user")
@@ -136,7 +143,14 @@ public class AccountController {
 		return "othersCommentManager";
 	}
 	
-	
-	
-	
+	// ajax 获取user对象
+	@RequestMapping(value="/json/user")
+	public void ajaxUser(@RequestBody User user, HttpServletResponse response) throws Exception {
+		user = userService.getUserById(user);
+		Gson gson = new Gson();
+		String userJson = gson.toJson(user);
+		logger.info("获取用户Json：" + userJson);
+		response.setContentType("text/html;charset=UTF-8");
+		response.getWriter().println(userJson);
+	}
 }

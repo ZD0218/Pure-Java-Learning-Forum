@@ -42,23 +42,53 @@ function getCommentPageList() {
 			type:"post",
 			contentType:"application/json",
 			data:JSON.stringify({"queryPage":{"page":0,"pageSize":6},"postId":postId}),
-			async:true,
+			async:false,
 			success:function(data) {
 				var commentAll = "";
 				$.each(data, function(index, comment){
+					
 					var commentId = comment.id;
 					var commentContent = comment.content;
 					var commentUserId = comment.userId;
+					var commentUserUsername;
+					var commentUserPassword;
+					var commentUserAvatar;
+					var commentUserNickname;
+					var commentUserEmail;
+					var commentUserSex;
+					var commentUserPersonalDescription;
+
+					$.ajax({
+						url:"${pageContext.request.contextPath}/user/json/user",
+						dataType:"json",
+						type:"post",
+						contentType:"application/json",
+						data:JSON.stringify({"id":commentUserId}),
+						async:false,
+						success:function(data) {
+							commentUserUsername = data.username;
+							commentUserPassword = data.password;
+							commentUserAvatar = data.avatar;
+							commentUserNickname = data.nickname;
+							commentUserEmail = data.email;
+							commentUserSex = data.sex;
+							commentUserPersonalDescription = data.personalDescription;
+						},
+						error:function(){
+							alert("此回复贴的用户信息请求失败");
+						}
+					});
+					
 					var commentSection ="<div class=\"box\">"
 											+ "<article class=\"media\">"
 												+ "<figure class=\"media-left\">"
 													+ "<p class=\"image is-64x64\">"
-														+ "<img src=\"https://bulma.io/images/placeholders/128x128.png\">"
+														+ "<img src=\"" + commentUserAvatar + "\">"
 													+ "</p>"
 												+ "</figure>"
 												+ "<div class=\"media-content\">"
 													+ "<div class=\"content\">"
-														+ "<p><strong>用户昵称</strong><small>@用户名</small><br>" + commentContent + "</p>"
+														+ "<p><strong>" + commentUserNickname + "</strong><small>@" + commentUserUsername + "</small><br>" + commentContent + "</p>"
 													+ "</div>"
 												+ "</div>"
 											+ "</article><br>"
