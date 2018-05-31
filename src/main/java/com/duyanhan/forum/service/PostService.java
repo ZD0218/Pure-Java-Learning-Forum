@@ -1,5 +1,8 @@
 package com.duyanhan.forum.service;
 
+import java.util.List;
+
+import com.duyanhan.forum.dto.QueryPageWithBlockId;
 import com.duyanhan.forum.entity.Post;
 
 public interface PostService {
@@ -10,4 +13,11 @@ public interface PostService {
 	 * @return
 	 */
 	boolean post(Post post);
+
+	/**
+	 * 根据分页对象和版块ID查询帖子
+	 * @param queryPageWithBlockId
+	 * @return
+	 */
+	List<Post> getPageListByQueryPageWithBlockId(QueryPageWithBlockId queryPageWithBlockId);
 }

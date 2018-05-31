@@ -23,6 +23,41 @@
 <script defer src="${pageContext.request.contextPath}/plugins/material-floating-button/mfb.js"></script>
 <!-- 我另行导入的字体样式 -->
 <link href="${pageContext.request.contextPath}/plugins/Ionicons/css/ionicons.min.css" rel="stylesheet">
+<script type="text/javascript">
+	/* 当页面加载完成之后 */
+	$(document).ready(function() {
+		// 获取版块ID
+		var blockId = ${requestScope.blockId};
+		// 根据版块ID对帖子进行分页查询，先展示首页，每页展示10条
+		$.ajax({
+			url:"${pageContext.request.contextPath}/json/postPageList",
+			dataType:"json",
+			type:"post",
+			contentType:"application/json",
+			data:JSON.stringify({"queryPage":{"page":0,"pageSize":3},"blockId":blockId}),
+			async:true,
+			success:function(data) {
+				var postAll="";
+				$.each(data, function(index, post){
+					var postId = post.id;alert(postId);
+					var postTitle = post.title;alert(postTitle);
+					var postContent = delHtmlTag(post.content).substring(1,70)+"......";
+					var postSection = "<div id=" + postId + " class=\"notification\"><a><strong>" + postTitle + "</strong><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + postContent + "</a></div>";
+					postAll = postAll + postSection;
+				});
+				$("#postAll").html(postAll);
+			},
+			error:function(){
+				alert("帖子分页列表请求失败");
+			}
+		});
+	});
+	// js过滤所有的html标签
+	function delHtmlTag(str)
+	{
+	      return str.replace(/<[^>]+>/g,"");//去掉所有的html标记
+	}
+</script>
 </head>
 <body>
 	<!-- 包含导航条 -->
@@ -39,8 +74,9 @@
 						</ul>
 					</div>
 				</div>
-				<div class="box">
-					<div class="notification is-primary">
+				<!-- 所有帖子 -->
+				<div id="postAll" class="box">
+					<!-- <div class="notification is-primary">
 						Primar lorem ipsum dolor sit amet, consectetur adipiscing elit
 						lorem ipsum dolor. <strong>Pellentesque risus mi</strong>
 						<div>
@@ -63,32 +99,10 @@
 								href="http://duyanhan.com"><span
 								class="tag is-rounded is-danger">编不下去了</span></a>
 						</div>
-					</div>
+					</div> -->
 
-					<div class="notification is-link">
-						Primar lorem ipsum dolor sit amet, consectetur adipiscing elit
-						lorem ipsum dolor. <strong>Pellentesque risus mi</strong>
-					</div>
-
-					<div class="notification is-info">
-						Primar lorem ipsum dolor sit amet, consectetur adipiscing elit
-						lorem ipsum dolor. <strong>Pellentesque risus mi</strong>
-					</div>
-
-					<div class="notification is-success">
-						Primar lorem ipsum dolor sit amet, consectetur adipiscing elit
-						lorem ipsum dolor. <strong>Pellentesque risus mi</strong>
-					</div>
-
-					<div class="notification is-warning">
-						Primar lorem ipsum dolor sit amet, consectetur adipiscing elit
-						lorem ipsum dolor. <strong>Pellentesque risus mi</strong>
-					</div>
-
-					<div class="notification is-danger">
-						Primar lorem ipsum dolor sit amet, consectetur adipiscing elit
-						lorem ipsum dolor. <strong>Pellentesque risus mi</strong>
-					</div>
+					<div></div>
+					
 				</div>
 
 			</div>

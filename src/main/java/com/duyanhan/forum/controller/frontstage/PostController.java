@@ -2,6 +2,8 @@ package com.duyanhan.forum.controller.frontstage;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,15 +11,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.duyanhan.forum.dto.QueryPage;
+import com.duyanhan.forum.dto.QueryPageWithBlockId;
 import com.duyanhan.forum.entity.Block;
 import com.duyanhan.forum.entity.Post;
 import com.duyanhan.forum.entity.User;
 import com.duyanhan.forum.service.BlockService;
 import com.duyanhan.forum.service.PostService;
+import com.google.gson.Gson;
 
 @Controller
 @SessionAttributes(value= {"currentUser"}, types= {com.duyanhan.forum.entity.User.class})
@@ -66,5 +72,15 @@ public class PostController {
 	@RequestMapping(value = "/postShow")
 	public String postShow() {
 		return "postShow";
+	}
+	
+	@RequestMapping(value = "/json/postPageList")
+	public void postPageList(@RequestBody QueryPageWithBlockId queryPageWithBlockId, HttpServletResponse response) throws Exception {
+		List<Post> postPageList = postService.getPageListByQueryPageWithBlockId(queryPageWithBlockId);
+		Gson gson = new Gson();
+		String postPageListJson = gson.toJson(postPageList);
+		logger.info("获取帖子分页列表Json：" + postPageListJson);
+		response.setContentType("text/html;charset=UTF-8");
+		response.getWriter().println(postPageListJson);
 	}
 }
