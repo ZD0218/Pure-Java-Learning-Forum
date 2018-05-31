@@ -28,10 +28,48 @@
 <!-- 当页面加载完成之后，加载分页版块列表 -->
 $(document).ready(function() {
 	getCommentPageList();
+	getPostAuthor();
 	$('.mfb-component__button--main').click(function(evt) {
 		evt.preventDefault()
 	});
 });
+
+// 获取帖子作者信息
+function getPostAuthor() {
+	var userId = ${requestScope.currentPost.userId};
+
+	$.ajax({
+		url:"${pageContext.request.contextPath}/user/json/user",
+		dataType:"json",
+		type:"post",
+		contentType:"application/json",
+		data:JSON.stringify({"id":userId}),
+		async:true,
+		success:function(data) {
+			var userUsername = data.username;
+			var userPassword = data.password;
+			var userAvatar = data.avatar;
+			var userNickname = data.nickname;
+			var userEmail = data.email;
+			var userSex = data.sex;
+			var userPersonalDescription = data.personalDescription;
+			var userAll =  "<div class=\"card\">"
+								+ "<div class=\"card-image\">"
+									+ "<div style=\"width:100%;height:0;background-image:url(" + userAvatar + ");background-size:cover;padding-bottom: 100%;\"></div>"
+								+ "</div>"
+								+ "<div class=\"card-content\">"
+									+ "<p class=\"title is-4\">" + userNickname + "</p><p class=\"subtitle is-6\">@" + userUsername + "</p>"
+									+ "<div class=\"content\">" + userPersonalDescription + "<time datetime=\"2016-1-1\">时间</time></div>"
+								+ "</div>"
+							+ "</div>";
+			$("#userAll").html(userAll);
+		},
+		error:function(){
+			alert("此回复贴的用户信息请求失败");
+		}
+	});
+}
+
 function getCommentPageList() {
 	// 获取帖子ID
 	var postId = ${requestScope.currentPost.id};
@@ -81,7 +119,7 @@ function getCommentPageList() {
 					
 					var commentSection ="<div class=\"box\">"
 											+ "<article class=\"media\">"
-												+ "<div id=\"currentAvatar\" class=\"media-left\" style=\"width:64px;height:64px;background-image:url(" + commentUserAvatar + ");background-size:cover;\"></div>"
+												+ "<div class=\"media-left\" style=\"width:64px;height:64px;background-image:url(" + commentUserAvatar + ");background-size:cover;\"></div>"
 												+ "<div class=\"media-content\"  style=\"margin-left:10px;\">"
 													+ "<div class=\"content\">"
 														+ "<p><strong>" + commentUserNickname + "</strong><small>@" + commentUserUsername + "</small><br>" + commentContent + "</p>"
@@ -151,24 +189,8 @@ function getCommentPageList() {
 				</section>
 			</div>
 			<div class="column">
-				<div class="card">
-					<div class="card-image">
-						<figure class="image is-4by3">
-							<img src="https://bulma.io/images/placeholders/1280x960.png"
-								alt="Placeholder image">
-						</figure>
-					</div>
-					<div class="card-content">
-						<p class="title is-4">John Smith</p>
-						<p class="subtitle is-6">@johnsmith</p>
-						<div class="content">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-							Phasellus nec iaculis mauris. <a>@bulmaio</a>. <a href="#">#css</a>
-							<a href="#">#responsive</a> <br>
-							<time datetime="2016-1-1">11:09 PM - 1 Jan 2018</time>
-						</div>
-					</div>
-				</div>
+				<!-- 作者的信息卡片 -->
+				<div id="userAll"></div>
 				<div class="box">
 					<b>他的魅力标签：</b>
 					<div>

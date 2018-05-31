@@ -180,7 +180,7 @@
 		</li>
 	</ul>
 	<!--分页-->
-	<div class="container">
+	<div class="container" style="margin-top:50px">
 		<div class="columns">
 			<div class="column is-three-fifths">
 				<nav class="pagination is-centered blank_distance" role="navigation"
