@@ -24,8 +24,8 @@ import com.google.gson.Gson;
 @Controller
 @RequestMapping(value= "/user")
 @SessionAttributes(value= {"currentUser"}, types= {com.duyanhan.forum.entity.User.class})
-public class AccountController {
-	private static final Log logger = LogFactory.getLog(AccountController.class);
+public class UserController {
+	private static final Log logger = LogFactory.getLog(UserController.class);
 	
 	@Autowired
 	private UserService userService;

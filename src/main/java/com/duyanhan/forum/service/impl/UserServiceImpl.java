@@ -7,7 +7,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.duyanhan.forum.controller.frontstage.AccountController;
+import com.duyanhan.forum.controller.frontstage.UserController;
 import com.duyanhan.forum.dao.UserMapper;
 import com.duyanhan.forum.dto.PasswordVO;
 import com.duyanhan.forum.entity.User;
