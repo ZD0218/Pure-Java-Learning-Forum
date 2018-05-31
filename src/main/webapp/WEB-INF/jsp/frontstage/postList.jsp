@@ -7,11 +7,22 @@
 <meta charset="UTF-8">
 <title>主页</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/bulma.css" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/extra.css" />
-<script defer src="${pageContext.request.contextPath }/js/all.js"></script>
+<!-- bulma框架样式 -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bulma.min.css" type="text/css" />
+<!-- 我自己的页面样式 -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/extra.css" />
+<!-- jquery文件 -->
+<script src="${pageContext.request.contextPath}/js/jquery3.2.1.min.js"></script>
+<!-- 导航栏Js文件 -->
+<script src="${pageContext.request.contextPath}/js/navbar.js"></script>
+<!-- bulma框架引入的字体样式 -->
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+<!-- 控制浮动按钮的样式和js文件 -->
+<link href="${pageContext.request.contextPath}/plugins/material-floating-button/mfb.css" rel="stylesheet">
+<script defer src="${pageContext.request.contextPath}/plugins/material-floating-button/mfb.js"></script>
+<!-- 我另行导入的字体样式 -->
+<link href="${pageContext.request.contextPath}/plugins/Ionicons/css/ionicons.min.css" rel="stylesheet">
 </head>
 <body>
 	<!-- 包含导航条 -->
@@ -133,6 +144,23 @@
 			</div>
 		</section>
 	</div>
+	<!-- 悬浮按钮 -->
+	<ul id="menu" class="mfb-component--br   mfb-slidein-spring "
+		data-mfb-toggle="click" style="display: block;">
+		<li class="mfb-component__wrap">
+			<a class="mfb-component__button--main"> 
+				<i class="mfb-component__main-icon--resting ion-plus-round"></i>
+				<i class="mfb-component__main-icon--active ion-close-round"></i>
+			</a>
+			<ul class="mfb-component__list">
+				<li>
+					<a href="${pageContext.request.contextPath}/postForm" data-mfb-label="快速发帖" class="mfb-component__button--child">
+						<i class="mfb-component__child-icon ion-edit"></i>
+					</a>
+				</li>
+			</ul>
+		</li>
+	</ul>
 	<!--分页-->
 	<div class="container">
 		<div class="columns">
