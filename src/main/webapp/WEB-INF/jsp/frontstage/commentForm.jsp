@@ -28,20 +28,22 @@
 	<div class="container blank_distance">
 		<div class="box">
 			<div class="box">回复帖子：${requestScope.currentPost.title }</div>
-			<form method="post" action="${pageContext.request.contextPath }/post">
-				<!-- 帖子内容 -->
+			<form:form modelAttribute="comment" method="post" action="${pageContext.request.contextPath }/comment">
+				<!-- 回复的帖子ID-->
+				<form:input path="postId" type="hidden"/>
+				<!-- 回复的内容 -->
 				<div id="summernote"></div>
-				<input path="content" type="hidden"/>
+				<form:input path="content" type="hidden"/>
 				<hr>
-				<!-- 发帖人-->
-				<input path="userId" type="hidden"/>
-				<!-- 发帖时间 -->
-				<input path="postTime" type="date" style="display:none;"/>
+				<!-- 回帖人-->
+				<form:input path="userId" type="hidden"/>
+				<!-- 回帖时间 -->
+				<form:input path="postTime" type="date" style="display:none;"/>
 				<!-- 更新时间 -->
-				<input path="updateTime" type="date" style="display:none;"/>
+				<form:input path="updateTime" type="date" style="display:none;"/>
 				<!-- 提交按钮 -->
 				<input class="button is-black" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;开始回帖&nbsp;&nbsp;&nbsp;&nbsp;">
-			</form>
+			</form:form>
 		</div>
 
 	</div>
