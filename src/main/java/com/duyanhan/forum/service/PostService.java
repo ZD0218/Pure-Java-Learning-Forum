@@ -20,4 +20,11 @@ public interface PostService {
 	 * @return
 	 */
 	List<Post> getPageListByQueryPageWithBlockId(QueryPageWithBlockId queryPageWithBlockId);
+
+	/**
+	 * 根据postId查询帖子
+	 * @param postId
+	 * @return
+	 */
+	Post getPostByPostId(Integer postId);
 }

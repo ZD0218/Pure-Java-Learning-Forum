@@ -40,4 +40,10 @@ public class PostServiceImpl implements PostService {
 		return postList;
 	}
 
+	@Override
+	public Post getPostByPostId(Integer postId) {
+		Post post = postMapper.selectByPrimaryKey(postId);
+		return post;
+	}
+
 }

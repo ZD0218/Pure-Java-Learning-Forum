@@ -37,24 +37,9 @@
 				<div class="box">
 					<div class="content">
 						<div class="section has-text-centered">
-							<h1 class="title is-4">Java基本运算符</h1>
+							<h1 class="title is-4">${requestScope.currentPost.title }</h1>
 						</div>
-						<p>位运算符主要针对二进制，它包括了：“与”、“非”、“或”、“异或”。从表面上看似乎有点像逻辑运算符，但逻辑运算符是针对两个关系运算符来进行逻辑运算，而位运算符主要针对两个二进制数的位进行逻辑运算。下面详细介绍每个位运算符。</p>
-						<p>
-							<br>1．与运算符<br>与运算符用符号“&amp;”表示，其使用规律如下：<br>两个操作数中位都为1，结果才为1，否则结果为0，例如下面的程序段。<br>public
-							class data13<br>{<br>public static void main(String[]
-							args)<br>{<br>int a=129;<br>int b=128;<br>System.out.println("a
-							和b 与的结果是："+(a&amp;b));<br>}<br>}<br>运行结果<br>a
-							和b 与的结果是：128<br>下面分析这个程序：<br>“a”的值是129，转换成二进制就是10000001，而“b”的值是128，转换成二进制就是10000000。根据与运算符的运算规律，只有两个位都是1，结果才是1，可以知道结果就是10000000，即128。
-						</p>
-						<p>
-							<br>2．或运算符<br>或运算符用符号“|”表示，其运算规律如下：<br>两个位只要有一个为1，那么结果就是1，否则就为0，下面看一个简单的例子。<br>public
-							class data14<br>{<br>public static void main(String[]
-							args)<br>{<br>int a=129;<br>int b=128;<br>System.out.println("a
-							和b 或的结果是："+(a|b));<br>}<br>}<br>运行结果<br>a 和b
-							或的结果是：129<br>下面分析这个程序段：<br>a 的值是129，转换成二进制就是10000001，而b
-							的值是128，转换成二进制就是10000000，根据或运算符的运算规律，只有两个位有一个是1，结果才是1，可以知道结果就是10000001，即129。
-						</p>
+						${requestScope.currentPost.content }
 					</div>
 				</div>
 				<!--评论区-->

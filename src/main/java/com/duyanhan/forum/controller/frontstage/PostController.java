@@ -69,11 +69,16 @@ public class PostController {
 	}
 
 	// 展示帖子
-	@RequestMapping(value = "/postShow")
-	public String postShow() {
+	@RequestMapping(value = "/postShow/{postId}")
+	public String postShow(@PathVariable Integer postId, Model model) {
+		// 将blockId 保存到request域中
+		// 根据postId获取Post 并转发到postShow页面
+		Post currentPost = postService.getPostByPostId(postId);
+		model.addAttribute("currentPost", currentPost);
 		return "postShow";
 	}
 	
+	// ajax获取分页帖子列表
 	@RequestMapping(value = "/json/postPageList")
 	public void postPageList(@RequestBody QueryPageWithBlockId queryPageWithBlockId, HttpServletResponse response) throws Exception {
 		List<Post> postPageList = postService.getPageListByQueryPageWithBlockId(queryPageWithBlockId);

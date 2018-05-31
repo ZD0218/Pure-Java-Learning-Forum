@@ -42,7 +42,7 @@
 					var postId = post.id;alert(postId);
 					var postTitle = post.title;alert(postTitle);
 					var postContent = delHtmlTag(post.content).substring(1,70)+"......";
-					var postSection = "<div id=" + postId + " class=\"notification\"><a><strong>" + postTitle + "</strong><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + postContent + "</a></div>";
+					var postSection = "<div id=" + postId + " class=\"notification\"><a href=\"${pageContext.request.contextPath}/postShow/" + postId + "\"><strong>" + postTitle + "</strong><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + postContent + "</a></div>";
 					postAll = postAll + postSection;
 				});
 				$("#postAll").html(postAll);
