@@ -34,13 +34,13 @@
 			dataType:"json",
 			type:"post",
 			contentType:"application/json",
-			data:JSON.stringify({"queryPage":{"page":0,"pageSize":3},"blockId":blockId}),
+			data:JSON.stringify({"queryPage":{"page":0,"pageSize":4},"blockId":blockId}),
 			async:true,
 			success:function(data) {
 				var postAll="";
 				$.each(data, function(index, post){
-					var postId = post.id;alert(postId);
-					var postTitle = post.title;alert(postTitle);
+					var postId = post.id;
+					var postTitle = post.title;
 					var postContent = delHtmlTag(post.content).substring(1,70)+"......";
 					var postSection = "<div id=" + postId + " class=\"notification\"><a href=\"${pageContext.request.contextPath}/postShow/" + postId + "\"><strong>" + postTitle + "</strong><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + postContent + "</a></div>";
 					postAll = postAll + postSection;

@@ -6,17 +6,56 @@
 <meta charset="UTF-8">
 <title>帖子页面</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/bulma.css" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/extra.css" />
+<!-- bulma框架样式 -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bulma.min.css" type="text/css" />
+<!-- 我自己的页面样式 -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/extra.css" />
+<!-- jquery文件 -->
+<script src="${pageContext.request.contextPath}/js/jquery3.2.1.min.js"></script>
+<!-- 导航栏Js文件 -->
+<script src="${pageContext.request.contextPath}/js/navbar.js"></script>
+<!-- bulma框架引入的字体样式 -->
+<script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
 <!-- 控制浮动按钮的样式和js文件 -->
-<link
-	href="${pageContext.request.contextPath}/plugins/material-floating-button/mfb.css"
-	rel="stylesheet">
-<script defer
-	src="${pageContext.request.contextPath}/plugins/material-floating-button/mfb.js"></script>
+<link href="${pageContext.request.contextPath}/plugins/material-floating-button/mfb.css" rel="stylesheet">
+<script defer src="${pageContext.request.contextPath}/plugins/material-floating-button/mfb.js"></script>
+<!-- 我另行导入的字体样式 -->
 <link href="${pageContext.request.contextPath}/plugins/Ionicons/css/ionicons.min.css" rel="stylesheet">
+<script>
+<!-- 当页面加载完成之后，加载分页版块列表 -->
+$(document).ready(function() {
+	getCommentPageList();
+});
+
+function getCommentPageList() {
+	// 获取帖子ID
+	var postId = ${requestScope.post.id};
+	// 根据帖子ID对评论进行分页查询，先展示首页的评论，每页展示10条
+	$.ajax({
+			url:"${pageContext.request.contextPath}/json/commentPageList",
+			dataType:"json",
+			type:"post",
+			contentType:"application/json",
+			data:JSON.stringify({"queryPage":{"page":0,"pageSize":6},"postId":postId}),
+			async:true,
+			success:function(data) {
+				var blockAll = "";
+				$.each(data, function(index, comment){
+					var commentId = comment.id;
+					var commentContent = comment.content;
+					var commentUserId = comment.userId;
+					var commentSection = "<div class=\"box\"><a class=\"has-text-info\" href=\"${pageContext.request.contextPath }/postList/" + commentId + "\"><b id=\"commentTitle\">" + commentTitle + "</b><div id=\"commentContent\">" + commentContent + "</div></a></div>";
+					commentAll = commentAll + commentSection;
+				});
+				$("#commentAll").html(commentAll);
+			},
+			error:function(){
+				alert("版块分页列表请求失败");
+			}
+		});
+}
+</script>
 </head>
 <body>
 	<!-- 包含导航条 -->
