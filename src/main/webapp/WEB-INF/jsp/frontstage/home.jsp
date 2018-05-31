@@ -27,6 +27,9 @@
 <!-- 当页面加载完成之后，加载分页版块列表 -->
 $(document).ready(function() {
 	getBlockPageList();
+	$('.mfb-component__button--main').click(function(evt) {
+		evt.preventDefault()
+	});
 });
 
 function getBlockPageList() {

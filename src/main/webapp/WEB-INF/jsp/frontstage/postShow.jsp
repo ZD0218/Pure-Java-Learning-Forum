@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,6 +28,9 @@
 <!-- 当页面加载完成之后，加载分页版块列表 -->
 $(document).ready(function() {
 	getCommentPageList();
+	$('.mfb-component__button--main').click(function(evt) {
+		evt.preventDefault()
+	});
 });
 function getCommentPageList() {
 	// 获取帖子ID
@@ -42,12 +44,30 @@ function getCommentPageList() {
 			data:JSON.stringify({"queryPage":{"page":0,"pageSize":6},"postId":postId}),
 			async:true,
 			success:function(data) {
-				var blockAll = "";
+				var commentAll = "";
 				$.each(data, function(index, comment){
 					var commentId = comment.id;
 					var commentContent = comment.content;
 					var commentUserId = comment.userId;
-					var commentSection = "<div class=\"box\"><a class=\"has-text-info\" href=\"${pageContext.request.contextPath }/postList/" + commentId + "\"><b id=\"commentTitle\">" + commentTitle + "</b><div id=\"commentContent\">" + commentContent + "</div></a></div>";
+					var commentSection ="<div class=\"box\">"
+											+ "<article class=\"media\">"
+												+ "<figure class=\"media-left\">"
+													+ "<p class=\"image is-64x64\">"
+														+ "<img src=\"https://bulma.io/images/placeholders/128x128.png\">"
+													+ "</p>"
+												+ "</figure>"
+												+ "<div class=\"media-content\">"
+													+ "<div class=\"content\">"
+														+ "<p><strong>用户昵称</strong><small>@用户名</small><br>" + commentContent + "</p>"
+													+ "</div>"
+												+ "</div>"
+											+ "</article><br>"
+											+ "<nav class=\"level is-mobile\">"
+												+ "<a class=\"level-item subtitle is-3 has-text-info\"><i class=\"icon ion-heart\"></i></a>"
+												+ "<a class=\"level-item subtitle is-3 has-text-info\"><i class=\"icon ion-thumbsup\"></i></a>"
+												+ "<a class=\"level-item subtitle is-3 has-text-info\"><i class=\"icon ion-thumbsdown\"></i></a>"
+											+ "</nav>"
+										+ "</div>";
 					commentAll = commentAll + commentSection;
 				});
 				$("#commentAll").html(commentAll);
@@ -83,100 +103,9 @@ function getCommentPageList() {
 						${requestScope.currentPost.content }
 					</div>
 				</div>
-				<!--评论区-->
 				<section>
-					<!--评论区一条条具体的评论-->
-					<div class="box">
-						<article class="media">
-							<figure class="media-left">
-								<p class="image is-64x64">
-									<img src="https://bulma.io/images/placeholders/128x128.png">
-								</p>
-							</figure>
-							<div class="media-content">
-								<div class="content">
-									<p>
-										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
-										<br> Lorem ipsum dolor sit amet, consectetur adipiscing
-										elit. Proin ornare magna eros, eu pellentesque tortor
-										vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis
-										feugiat facilisis.
-									</p>
-								</div>
-							</div>
-						</article>
-						<br>
-						<nav class="level is-mobile">
-							<a class="level-item subtitle is-3 has-text-info"> <i
-								class="icon ion-heart"></i>
-							</a> <a class="level-item subtitle is-3 has-text-info"> <i
-								class="icon ion-thumbsup"></i>
-							</a> <a class="level-item subtitle is-3 has-text-info"> <i
-								class="icon ion-thumbsdown"></i>
-							</a>
-						</nav>
-					</div>
-					<div class="box">
-						<article class="media">
-							<figure class="media-left">
-								<p class="image is-64x64">
-									<img src="https://bulma.io/images/placeholders/128x128.png">
-								</p>
-							</figure>
-							<div class="media-content">
-								<div class="content">
-									<p>
-										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
-										<br> Lorem ipsum dolor sit amet, consectetur adipiscing
-										elit. Proin ornare magna eros, eu pellentesque tortor
-										vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis
-										feugiat facilisis.
-									</p>
-								</div>
-							</div>
-						</article>
-						<br>
-						<nav class="level is-mobile">
-							<a class="level-item subtitle is-3 has-text-info"> <i
-								class="icon ion-heart"></i>
-							</a> <a class="level-item subtitle is-3 has-text-info"> <i
-								class="icon ion-thumbsup"></i>
-							</a> <a class="level-item subtitle is-3 has-text-info"> <i
-								class="icon ion-thumbsdown"></i>
-							</a>
-						</nav>
-					</div>
-					<div class="box">
-						<article class="media">
-							<figure class="media-left">
-								<p class="image is-64x64">
-									<img src="https://bulma.io/images/placeholders/128x128.png">
-								</p>
-							</figure>
-							<div class="media-content">
-								<div class="content">
-									<p>
-										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
-										<br> Lorem ipsum dolor sit amet, consectetur adipiscing
-										elit. Proin ornare magna eros, eu pellentesque tortor
-										vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis
-										feugiat facilisis.
-									</p>
-								</div>
-							</div>
-						</article>
-						<br>
-						<nav class="level is-mobile">
-							<a class="level-item subtitle is-3 has-text-info"> <i
-								class="icon ion-heart"></i>
-							</a> <a class="level-item subtitle is-3 has-text-info"> <i
-								class="icon ion-thumbsup"></i>
-							</a> <a class="level-item subtitle is-3 has-text-info"> <i
-								class="icon ion-thumbsdown"></i>
-							</a>
-						</nav>
-					</div>
-
+					<!--评论区-->
+					<div id="commentAll" class="box"></div>
 					<!--针对评论区的分页-->
 					<nav class="pagination is-centered" role="navigation"
 						aria-label="pagination">
@@ -249,11 +178,11 @@ function getCommentPageList() {
 					class="mfb-component__button--child"> <i
 						class="mfb-component__child-icon ion-edit"></i>
 				</a></li>
-				<li><a href="" data-mfb-label="收藏此贴"
+				<li><a data-mfb-label="收藏此贴"
 					class="mfb-component__button--child"> <i
 						class="mfb-component__child-icon ion-heart"></i>
 				</a></li>
-				<li><a href="" data-mfb-label="为此贴点赞"
+				<li><a data-mfb-label="为此贴点赞"
 					class="mfb-component__button--child"> <i
 						class="mfb-component__child-icon ion-thumbsup"></i>
 				</a></li>

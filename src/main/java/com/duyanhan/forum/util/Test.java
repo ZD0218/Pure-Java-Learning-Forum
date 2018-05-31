@@ -16,5 +16,24 @@ public class Test {
 		en.setBlockId(15);
 		String json = g.toJson(en);
 		System.out.println(json);
+		String test = "<div class=\"box\">"
+					+ "<article class=\"media\">"
+						+ "<figure class=\"media-left\">"
+							+ "<p class=\"image is-64x64\">"
+								+ "<img src=\"https://bulma.io/images/placeholders/128x128.png\">"
+							+ "</p>"
+						+ "</figure>"
+						+ "<divclass=\"media-content\">"
+							+ "<div class=\"content\">"
+								+ "<p><strong>用户昵称</strong><small>@用户名</small><br>评论内容</p>"
+							+ "</div>"
+						+ "</div>"
+					+ "</article><br>"
+					+ "<nav class=\"level is-mobile\">"
+						+ "<a class=\"level-item subtitle is-3 has-text-info\"> <i	class=\"icon ion-heart\"></i></a>"
+						+ "<a class=\"level-item subtitle is-3 has-text-info\"><i	class=\"icon ion-thumbsup\"></i></a>"
+						+ "<a class=\"level-item subtitle is-3 has-text-info\"><i class=\"icon ion-thumbsdown\"></i></a>"
+					+ "</nav>"
+				+ "</div>";
 	}
 }

@@ -51,6 +51,10 @@
 				alert("帖子分页列表请求失败");
 			}
 		});
+		
+		$('.mfb-component__button--main').click(function(evt) {
+			evt.preventDefault()
+		});
 	});
 	// js过滤所有的html标签
 	function delHtmlTag(str)
