@@ -19,7 +19,7 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
 	private static final Log logger = LogFactory.getLog(AuthorizationInterceptor.class);
 
 	// 定义哪些请求是不需要被拦截的
-	private static final String[] IGNORE_URI = {"/home", "/block", "/login","/register", "/index", "/postList"};
+	private static final String[] IGNORE_URI = {"/home", "/block", "/login","/register", "/index", "/postList", "/postShow", "/postPageList", "/commentPageList"};
 	
 	
 	@Override
