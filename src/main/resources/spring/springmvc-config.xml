@@ -48,5 +48,12 @@
             <value>.jsp</value>
         </property>
     </bean>
+
+    <mvc:interceptors>
+     <!--    <mvc:interceptor>
+            <mvc:mapping path="/*"/> -->
+            <bean class="com.duyanhan.forum.interceptor.AuthorizationInterceptor"/>
+        <!-- </mvc:interceptor> -->
+    </mvc:interceptors>
     
 </beans>

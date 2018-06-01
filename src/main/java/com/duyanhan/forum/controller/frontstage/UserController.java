@@ -1,7 +1,5 @@
 package com.duyanhan.forum.controller.frontstage;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.duyanhan.forum.dto.PasswordVO;
-import com.duyanhan.forum.entity.Post;
 import com.duyanhan.forum.entity.User;
 import com.duyanhan.forum.service.UserService;
 import com.google.gson.Gson;
