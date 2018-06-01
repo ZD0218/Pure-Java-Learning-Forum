@@ -16,7 +16,7 @@
 			<nav class="navbar is-transparent">
 				<div class="navbar-brand">
 					<!-- 主页LOGO跳转 -->
-					<a class="navbar-item" href="${pageContext.request.contextPath}/">
+					<a class="navbar-item" href="${pageContext.request.contextPath}/index">
 						<img src="${pageContext.request.contextPath}/images/LOGO.png"
 						alt="Bulma: a modern CSS framework based on Flexbox" width="151"
 						height="28">

@@ -24,7 +24,7 @@ public class CommonController {
 	}
 	
 	// 默认欢迎页
-	@RequestMapping(value="/")
+	@RequestMapping(value="/index")
 	public String index() {
 		return  "index";
 	}

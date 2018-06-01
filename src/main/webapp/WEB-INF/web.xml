@@ -51,6 +51,9 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
   
+    <welcome-file-list>
+    <welcome-file>index</welcome-file>
+    </welcome-file-list>
     
     <display-name>JavaLearningForum</display-name>
 </web-app>

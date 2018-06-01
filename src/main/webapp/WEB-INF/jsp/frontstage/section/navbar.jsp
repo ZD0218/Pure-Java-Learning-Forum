@@ -35,7 +35,7 @@
 	<div class="container">
 		<div class="navbar-brand">
 			<!-- 设置欢迎页 -->
-			<a class="navbar-item" href="${pageContext.request.contextPath}/">
+			<a class="navbar-item" href="${pageContext.request.contextPath}/index">
 				<img src="${pageContext.request.contextPath}/images/LOGO.png"
 				alt="Bulma: a modern CSS framework based on Flexbox" width="151"
 				height="28">
