@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.duyanhan.forum.dto.PostListAndTotalPostNumber;
 import com.duyanhan.forum.dto.QueryPage;
 import com.duyanhan.forum.dto.QueryPageWithBlockId;
 import com.duyanhan.forum.entity.Block;
@@ -81,11 +82,11 @@ public class PostController {
 	// ajax获取分页帖子列表
 	@RequestMapping(value = "/json/postPageList")
 	public void postPageList(@RequestBody QueryPageWithBlockId queryPageWithBlockId, HttpServletResponse response) throws Exception {
-		List<Post> postPageList = postService.getPageListByQueryPageWithBlockId(queryPageWithBlockId);
+		PostListAndTotalPostNumber postListAndTotalPostNumber = postService.getPostListAndTotalPostNumberByQueryPageWithBlockId(queryPageWithBlockId);
 		Gson gson = new Gson();
-		String postPageListJson = gson.toJson(postPageList);
-		logger.info("获取帖子分页列表Json：" + postPageListJson);
+		String postListAndTotalPostNumberJson = gson.toJson(postListAndTotalPostNumber);
+		logger.info("获取帖子分页列表Json：" + postListAndTotalPostNumberJson);
 		response.setContentType("text/html;charset=UTF-8");
-		response.getWriter().println(postPageListJson);
+		response.getWriter().println(postListAndTotalPostNumberJson);
 	}
 }

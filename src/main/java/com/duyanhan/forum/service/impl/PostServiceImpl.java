@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.duyanhan.forum.dao.PostMapper;
+import com.duyanhan.forum.dto.PostListAndTotalPostNumber;
 import com.duyanhan.forum.dto.QueryPage;
 import com.duyanhan.forum.dto.QueryPageWithBlockId;
 import com.duyanhan.forum.entity.Post;
@@ -28,7 +29,7 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public List<Post> getPageListByQueryPageWithBlockId(QueryPageWithBlockId queryPageWithBlockId) {
+	public PostListAndTotalPostNumber getPostListAndTotalPostNumberByQueryPageWithBlockId(QueryPageWithBlockId queryPageWithBlockId) {
 		Integer blockId = queryPageWithBlockId.getBlockId();
 		QueryPage queryPage = queryPageWithBlockId.getQueryPage();
 		PostExample postExample = new PostExample();
@@ -36,8 +37,12 @@ public class PostServiceImpl implements PostService {
 		postExample.page(queryPage.getPage(), queryPage.getPageSize());
 		// 按版块ID查询
 		postExample.createCriteria().andBlockIdEqualTo(blockId);
+		// 当前页面的帖子列表
 		List<Post> postList = postMapper.selectByExampleWithBLOBs(postExample);
-		return postList;
+		// 总帖子数
+		Integer totalPostNumber = (int) postMapper.countByExample(postExample);
+		PostListAndTotalPostNumber postListAndTotalPostNumber = new PostListAndTotalPostNumber(postList, totalPostNumber);
+		return postListAndTotalPostNumber;
 	}
 
 	@Override

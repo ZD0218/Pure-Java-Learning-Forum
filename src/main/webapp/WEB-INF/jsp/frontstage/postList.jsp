@@ -26,6 +26,14 @@
 <script type="text/javascript">
 	/* 当页面加载完成之后 */
 	$(document).ready(function() {
+		goTo(1);
+		$('.mfb-component__button--main').click(function(evt) {
+			evt.preventDefault()
+		});
+	});
+	function goTo(currentPageNumber) {
+		// 每页帖子数
+		var pageSize = 1;
 		// 获取版块ID
 		var blockId = ${requestScope.blockId};
 		// 根据版块ID对帖子进行分页查询，先展示首页，每页展示10条
@@ -34,11 +42,18 @@
 			dataType:"json",
 			type:"post",
 			contentType:"application/json",
-			data:JSON.stringify({"queryPage":{"page":0,"pageSize":4},"blockId":blockId}),
+			data:JSON.stringify({"queryPage":{"page":currentPageNumber-1,"pageSize":pageSize},"blockId":blockId}),
 			async:true,
 			success:function(data) {
+				// 当前页面帖子列表所有内容
 				var postAll="";
-				$.each(data, function(index, post){
+				// 总帖子数
+				var totalPostNumber = data.totalPostNumber;
+				// 总页面数
+				var pageEnd = Math.ceil(totalPostNumber/pageSize);
+				// 帖子列表内容填充
+				var postList = data.postList;
+				$.each(postList, function(index, post){
 					var postId = post.id;
 					var postTitle = post.title;
 					var postContent = delHtmlTag(post.content).substring(1,70)+"......";
@@ -46,16 +61,59 @@
 					postAll = postAll + postSection;
 				});
 				$("#postAll").html(postAll);
+				
+				
+				// 当前页面分页导航栏所有内容
+				var paginationAll = ""; 
+				// 如果当前页码大于1
+				if (currentPageNumber > 1) {
+					// 上一页的页码
+					var previousPageNumber = currentPageNumber - 1;
+					// 上一页
+					paginationAll = paginationAll + "<a href=\"javascript:void(0);\" onclick=\"goTo(" + previousPageNumber + ")\" class=\"pagination-previous\">Previous</a>"
+				}
+				// 如果当前页码小于尾页
+				if (currentPageNumber < pageEnd) {
+					// 下一页的页码
+					var nextPageNumber = currentPageNumber + 1;
+					// 下一页
+					paginationAll = paginationAll + "<a href=\"javascript:void(0);\" onclick=\"goTo(" + nextPageNumber + ")\" class=\"pagination-next\">Next page</a>"
+				}
+				/* alert(paginationAll); */
+				// 添加页码按钮列表
+				paginationAll = paginationAll + "<ul class=\"pagination-list\">";
+					// 如果当前页面大于1
+					if (currentPageNumber > 1) {
+						// 首页
+						paginationAll = paginationAll + "<li><a class=\"pagination-link\" href=\"javascript:void(0);\" onclick=\"goTo(" + 1 + ")\" aria-label=\"Goto page 1\">1</a></li>";
+						
+					}
+					if (currentPageNumber > 2) {
+						// 省略号
+						paginationAll = paginationAll + "<li><span class=\"pagination-ellipsis\">&hellip;</span></li>";
+					}
+					// 当前页
+					paginationAll = paginationAll + "<li><a id=\"currentPageNumber\" class=\"pagination-link is-current\" href=\"javascript:void(0);\" onclick=\"goTo(" + currentPageNumber + ")\" aria-label=\"Page 46\" aria-current=\"page\">" + currentPageNumber + "</a></li>";
+					// 如果当前页面距离尾页超过1页
+					if (currentPageNumber + 1 < pageEnd) {
+						// 省略号
+						paginationAll = paginationAll + "<li><span class=\"pagination-ellipsis\">&hellip;</span></li>";
+					}
+					
+					// 如果当前页面小于尾页
+					if (currentPageNumber < pageEnd) {
+						// 末页
+						paginationAll = paginationAll + "<li><a class=\"pagination-link\" href=\"javascript:void(0);\" onclick=\"goTo(" + pageEnd + ")\" aria-label=\"Goto page " + pageEnd + "\">" + pageEnd + "</a></li>";
+					}
+				paginationAll = paginationAll + "</ul>";
+				
+				$("#paginationAll").html(paginationAll);
 			},
 			error:function(){
 				alert("帖子分页列表请求失败");
 			}
 		});
-		
-		$('.mfb-component__button--main').click(function(evt) {
-			evt.preventDefault()
-		});
-	});
+	}
 	// js过滤所有的html标签
 	function delHtmlTag(str)
 	{
@@ -183,20 +241,7 @@
 	<div class="container" style="margin-top:50px">
 		<div class="columns">
 			<div class="column is-three-fifths">
-				<nav class="pagination is-centered blank_distance" role="navigation"
-					aria-label="pagination">
-					<a class="pagination-previous">Previous</a> <a
-						class="pagination-next">Next page</a>
-					<ul class="pagination-list">
-						<li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
-						<li><span class="pagination-ellipsis">&hellip;</span></li>
-						<li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
-						<li><a class="pagination-link is-current"
-							aria-label="Page 46" aria-current="page">46</a></li>
-						<li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
-						<li><span class="pagination-ellipsis">&hellip;</span></li>
-						<li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
-					</ul>
+				<nav id="paginationAll" class="pagination is-centered blank_distance" role="navigation" aria-label="pagination">
 				</nav>
 			</div>
 		</div>
