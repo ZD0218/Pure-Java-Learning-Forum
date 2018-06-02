@@ -41,7 +41,7 @@ public class UserController {
 		}
 		else {
 			// 登录失败
-			logger.error("用户{"+currentUser.getUsername()+"}登录失败，数据库查无此人");
+			logger.error("登录失败，数据库查无此人");
 			return "redirect:/loginForm";
 		}
 	}
