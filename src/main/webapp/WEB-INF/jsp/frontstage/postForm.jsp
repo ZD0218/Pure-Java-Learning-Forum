@@ -98,7 +98,6 @@
 		// 发帖时,发帖时间和更新时间都一致
 		$("#postTime").val(now);
 		$("#updateTime").val(now);
-		
 	});
 </script>
 </html>

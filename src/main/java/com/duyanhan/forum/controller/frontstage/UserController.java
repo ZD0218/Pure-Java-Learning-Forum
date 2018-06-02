@@ -42,7 +42,7 @@ public class UserController {
 		else {
 			// 登录失败
 			logger.error("用户{"+currentUser.getUsername()+"}登录失败，数据库查无此人");
-			return "loginForm";
+			return "redirect:/loginForm";
 		}
 	}
 
@@ -54,12 +54,12 @@ public class UserController {
 		if (registerResult) {
 			// 注册成功
 			logger.info("用户{"+user.getUsername()+"}注册成功");
-			return "loginForm";
+			return "redirect:/loginForm";
 		}
 		else {
 			// 注册失败
 			logger.info("用户{"+user.getUsername()+"}注册失败");
-			return "registerForm";
+			return "redirect:/registerForm";
 		}
 	}
 	

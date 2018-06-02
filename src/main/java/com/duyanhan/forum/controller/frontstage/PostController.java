@@ -53,7 +53,8 @@ public class PostController {
 		boolean postResult = postService.post(post);
 		if(postResult) {
 			logger.info("发表成功");
-			return "postList";
+			
+			return "redirect:/postList/1";
 		}
 		else {
 			logger.error("发帖失败");

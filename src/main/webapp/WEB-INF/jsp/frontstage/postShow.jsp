@@ -59,7 +59,7 @@ function getPostAuthor() {
 								+ "</div>"
 								+ "<div class=\"card-content\">"
 									+ "<p class=\"title is-4\">" + userNickname + "</p><p class=\"subtitle is-6\">@" + userUsername + "</p>"
-									+ "<div class=\"content\">" + userPersonalDescription + "<time datetime=\"2016-1-1\">时间</time></div>"
+									+ "<div class=\"content\">" + userPersonalDescription + "<time datetime=\"2016-1-1\"></time></div>"
 								+ "</div>"
 							+ "</div>";
 			$("#userAll").html(userAll);

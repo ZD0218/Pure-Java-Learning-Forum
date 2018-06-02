@@ -33,7 +33,7 @@
 	});
 	function goTo(currentPageNumber) {
 		// 每页帖子数
-		var pageSize = 1;
+		var pageSize = 3;
 		// 获取版块ID
 		var blockId = ${requestScope.blockId};
 		// 根据版块ID对帖子进行分页查询，先展示首页，每页展示10条
