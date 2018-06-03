@@ -20,7 +20,7 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
 
 	// 定义哪些请求是不需要被拦截的
 	private static final String[] IGNORE_URI = {"/home", "/block", "/login","/register", "/index",
-			"/postList", "/postShow", "/postPageList", "/commentPageList", "/json/user"};
+			"/postList", "/postShow", "/postPageList", "/commentPageList", "/json/user", "/css", "/js", "/plugins"};
 	
 	
 	@Override
