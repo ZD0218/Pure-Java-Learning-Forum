@@ -2,10 +2,8 @@
 这是一个纯粹的Java语言的学习论坛。前端基于Bulma框架，后端实现基于SSM框架。其中还引用了许多其他优秀的插件。
 
 ## 项目说明
-Pure-Java-Learning-Forum 是用SpringMVC、Spring、MyBatis作为后端框架，开发的一个Java学习论坛，其具有以下特点：
-* 轻量级css框架，界面能够自适应
-* 基本的论坛发帖回帖功能
-* 更多特性等待开发和探索
+Pure-Java-Learning-Forum 是用SpringMVC、Spring、MyBatis作为后端框架，开发的一个Java学习论坛。
+项目仍在持续开发中...
 
 ## 项目组件
 #### 前端相关：
