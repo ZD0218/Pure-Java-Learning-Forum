@@ -3,7 +3,7 @@
 
 ## 项目说明
 Pure-Java-Learning-Forum 是用Bulma作为前端框架，SpringMVC、Spring、MyBatis作为后端框架，开发的一个Java学习论坛。
-精力有限，所以功能尚未完全，**仍在持续开发中...**
+精力有限，所以功能尚未完全，**仍在持续开发中...**:blush:
 
 ## 项目组件
 #### 前端相关：
@@ -18,6 +18,14 @@ Pure-Java-Learning-Forum 是用Bulma作为前端框架，SpringMVC、Spring、My
 * spring-framework  <https://github.com/spring-projects/spring-framework>
 * MyBatis  <http://www.mybatis.org/mybatis-3/>
 * MyBatis Generator  <http://www.mybatis.org/generator/>
+
+## 开发环境
+* IDE		eclipse 4.7.2
+* 数据库		MySQL Community Server 5.6.38 
+* Web服务器	apache-tomcat-8.0.51
+* 构建方式		Maven
+* 版本控制		Git
+* web浏览器  	Google Chrome Version 66.0.3359.181
 
 ## 预览图
 **用户界面：**
