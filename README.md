@@ -1,5 +1,4 @@
 # Pure-Java-Learning-Forum
-
 这是一个纯粹的Java语言的学习论坛。前端基于Bulma框架，后端实现基于SSM框架。其中还引用了许多其他优秀的插件。
 
 ## 项目说明
@@ -15,8 +14,12 @@ Pure-Java-Learning-Forum 是用SpringMVC、Spring、MyBatis作为后端框架，
 * material-floating-button  <https://github.com/nobitagit/material-floating-button>
 * layui  <http://www.layui.com>
 * ionicons  <http://ionicons.com/>
+* sm.ms  <https://sm.ms>
 
 #### 后端相关：
+* spring-framework  <https://github.com/spring-projects/spring-framework>
+* MyBatis  <http://www.mybatis.org/mybatis-3/>
+* MyBatis Generator  <http://www.mybatis.org/generator/>
 
 ## 预览图
 **用户界面：**
